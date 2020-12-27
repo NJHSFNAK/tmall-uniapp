@@ -1,0 +1,81 @@
+{
+	"pages": [
+		{
+			"path": "pages/search/Search",
+			"style": {
+				"navigationBarTitleText": "搜索",
+				"navigationBarBackgroundColor":"#fe0024",
+				"navigationBarTextStyle":"white"
+			}
+		},
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "首页",
+				"navigationBarBackgroundColor":"#fe0024",
+				"navigationBarTextStyle":"white"
+			}
+		},
+		
+		{
+			"path": "pages/sort/sort",
+			"style": {
+				"navigationBarTitleText": "分类",
+				"navigationBarTextStyle":"white"
+			}
+		},
+		{
+			"path": "pages/shopping/shopping",
+			"style": {
+				"navigationBarTitleText": "购物车",
+				"navigationBarTextStyle":"white"
+			}
+		},
+		{
+			"path": "pages/profile/profile",
+			"style": {
+				"navigationBarTitleText": "个人中心",
+				"navigationBarTextStyle":"white"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	// 配置底部导航栏
+	"tabBar":{
+		"color": "#333",
+		"selectedColor": "#F78E15",
+		"borderStyle": "black",
+		"backgroundColor": "#fff",
+		"list":[
+			{
+				"pagePath":"pages/index/index",
+				"text":"首页",
+				"iconPath":"static/tab/tab-a.png",
+				"selectedIconPath":"static/tab/tab-b.png"
+			},
+			{
+				"pagePath":"pages/sort/sort",
+				"text":"分类",
+				"iconPath":"static/tab/tab-c.png",
+				"selectedIconPath":"static/tab/tab-d.png"
+			},
+			{
+				"pagePath":"pages/shopping/shopping",
+				"text":"购物车",
+				"iconPath":"static/tab/tab-e.png",
+				"selectedIconPath":"static/tab/tab-f.png"
+			},
+			{
+				"pagePath":"pages/profile/profile",
+				"text":"我的",
+				"iconPath":"static/tab/tab-g.png",
+				"selectedIconPath":"static/tab/tab-h.png"
+			}
+		]
+	}
+}
