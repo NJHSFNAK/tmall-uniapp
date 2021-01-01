@@ -1,0 +1,1 @@
+<view class="Product-view data-v-2aa62265"><block wx:for="{{describe.Detaileddrawing}}" wx:for-item="item" wx:for-index="index" wx:key="index"><block class="data-v-2aa62265"><image src="{{item}}" mode="widthFix" data-event-opts="{{[['tap',[['previmg',[index,'$0'],['describe.Detaileddrawing']]]]]}}" bindtap="__e" class="data-v-2aa62265"></image></block></block></view>

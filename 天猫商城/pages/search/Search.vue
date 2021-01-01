@@ -74,11 +74,10 @@
 			},
 			// 存储搜索历史
 			getStorage(searchkey){
-				// uni.setStorageSync()
 				// 存之前先获取之前存储的值
-				let seararray = uni.getStorageSync('srarch_key') || []
-				seararray.unshift(searchkey)
-				uni.setStorageSync('srarch_key', seararray)
+				let seararray = uni.getStorageSync('srarch_key') || [];
+				seararray.unshift(searchkey);
+				uni.setStorageSync('srarch_key', seararray);
 			},
 			// 取出搜索历史
 			setStorage(){

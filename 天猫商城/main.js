@@ -11,7 +11,17 @@ Vue.config.productionTip = false;
 Vue.prototype.$Request = request;
 Vue.prototype.$Urls = urls;
 
+// 动画样式
+import './pattern/animat.css';
+// 产品参数
+import './pattern/styles.css';
+
 Vue.component('loader-on',loading);
+
+// bus传值
+import bus from './pages/commonJs/bus.js';
+// 全局使用
+Vue.prototype.$bus = bus;
 
 App.mpType = 'app';
 // 全局样式

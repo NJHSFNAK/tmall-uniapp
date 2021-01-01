@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/details/details",
     "pages/search/Search",
     "pages/index/index",
     "pages/sort/sort",
@@ -47,5 +48,6 @@
   },
   "usingComponents": {
     "loader-on": "/pages/common/loading"
-  }
+  },
+  "sitemapLocation": "sitemap5.json"
 }

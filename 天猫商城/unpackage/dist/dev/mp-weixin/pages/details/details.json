@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "详情页",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "top": "/pages/details/children/Top",
+    "price": "/pages/details/children/Price",
+    "parame": "/pages/details/children/Parame",
+    "evaluate": "/pages/details/children/Evaluate",
+    "product": "/pages/details/children/Product"
+  }
+}

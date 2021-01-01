@@ -11,8 +11,8 @@
 var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 5));
 
 
-var _api = _interopRequireDefault(__webpack_require__(/*! ./api/api.js */ 67));
-var _request = _interopRequireDefault(__webpack_require__(/*! ./api/request.js */ 68));
+var _api = _interopRequireDefault(__webpack_require__(/*! ./api/api.js */ 11));
+var _request = _interopRequireDefault(__webpack_require__(/*! ./api/request.js */ 12));
 
 
 
@@ -21,14 +21,24 @@ var _request = _interopRequireDefault(__webpack_require__(/*! ./api/request.js *
 
 
 
+__webpack_require__(/*! ./pattern/animat.css */ 134);
+
+__webpack_require__(/*! ./pattern/styles.css */ 136);
 
 
 
-__webpack_require__(/*! ./style/style.css */ 98);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var loading = function loading() {__webpack_require__.e(/*! require.ensure | pages/common/loading */ "pages/common/loading").then((function () {return resolve(__webpack_require__(/*! ./pages/common/loading.vue */ 81));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};_vue.default.config.productionTip = false;_vue.default.prototype.$Request = _api.default;_vue.default.prototype.$Urls = _request.default;_vue.default.component('loader-on', loading);_App.default.mpType = 'app'; // 全局样式
 
-var app = new _vue.default(_objectSpread({},
-_App.default));
+var _bus = _interopRequireDefault(__webpack_require__(/*! ./pages/commonJs/bus.js */ 138));
 
+
+
+
+
+__webpack_require__(/*! ./style/style.css */ 13);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var loading = function loading() {__webpack_require__.e(/*! require.ensure | pages/common/loading */ "pages/common/loading").then((function () {return resolve(__webpack_require__(/*! ./pages/common/loading.vue */ 57));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};_vue.default.config.productionTip = false;_vue.default.prototype.$Request = _api.default;_vue.default.prototype.$Urls = _request.default; // 动画样式
+_vue.default.component('loader-on', loading); // bus传值
+// 全局使用
+_vue.default.prototype.$bus = _bus.default;_App.default.mpType = 'app'; // 全局样式
+var app = new _vue.default(_objectSpread({}, _App.default));
 createApp(app).$mount();
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createApp"]))
 

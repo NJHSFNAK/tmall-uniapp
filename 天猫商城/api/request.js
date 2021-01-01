@@ -18,8 +18,15 @@ const urls = class{
 		let commodcardurl = `${url}commodcrad`;
 		// 请求搜索接口
 		let searchurl = `${url}search`;
+		// 详情页接口
+		let detailsurl = `${url}introduce`;
+		// 商品参数信息
+		let parameurl = `${url}parameter`;
+		// 商品的评价
+		let commiturl = `${url}wxcommnt`;
 		return{
-			bannerget,getrecommurl,billboardurl,commodcardurl,searchurl
+			bannerget,getrecommurl,billboardurl,commodcardurl,searchurl,detailsurl,parameurl,
+				commiturl
 		}
 	}
 }

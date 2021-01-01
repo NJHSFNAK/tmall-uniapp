@@ -1,6 +1,14 @@
 {
 	"pages": [
 		{
+			"path": "pages/details/details",
+			"style": {
+				"navigationBarTitleText": "详情页",
+				"navigationStyle":"custom"
+				
+			}
+		},
+		{
 			"path": "pages/search/Search",
 			"style": {
 				"navigationBarTitleText": "搜索",
