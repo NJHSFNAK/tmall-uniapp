@@ -1,23 +1,18 @@
 <template>
 <view>
 	<view class="navs-view">
-		<view class="navs-image"
-		:style=" 'height:' + tophight.height + 'px;' "
-		@click="pageRe()"
-		>
-		<image src="/static/details/fanhuihei.png" mode="widthFix"></image>
+		<view class="navs-image":style=" 'height:' + tophight.height + 'px;' "@click="pageRe()">
+			<image src="/static/details/fanhuihei.png" mode="widthFix"></image>
 		</view>
 		<view class="navs">
 			<block v-for="(item, index) in navalue" :key="index">
-			<view class="navs-nav" :class="{navactivetext: index == num}"
-			:style=" 'height:' + tophight.height + 'px;' + 'line-height:' +  tophight.height + 'px;' "
-			@click="navbtn(index)"
-			>{{item.name}}</view>
+				<view class="navs-nav" :class="{navactivetext: index == num}"
+				:style=" 'height:' + tophight.height + 'px;' + 'line-height:' +  tophight.height + 'px;' "
+				@click="navbtn(index)">{{item.name}}</view>
 			</block>
 		</view>
 		<view style="width: 20px; padding-right: 20rpx;"></view>
 	</view>
-	
 </view>
 </template>
 
@@ -28,33 +23,35 @@ export default{
 		return {
 			num:0,
 			navalue: [
-					{
-						'name':'商品'
-					},
-					{
-						'name':'评价'
-					},
-					{
-						'name':'详情'
-					}
+				{
+					'name':'商品'
+				},
+				{
+					'name':'评价'
+				},
+				{
+					'name':'详情'
+				}
 			]
 		}
 	},
 	methods:{
 		navbtn(index){
-			this.num = index
-			console.log(index)
+			this.change();
 			if(index === 0){
 				this.backTop()
 			}else{
 				this.$parent.fathEr(index)
 			}
 		},
+		change(index){
+			this.num = index;
+		},
 		// 回到顶部
 		backTop(){
 			uni.pageScrollTo({
-			    scrollTop: 0,
-			    duration: 300
+				scrollTop: 0,
+				duration: 300
 			});
 		},
 		// 返回上一页面

@@ -9,6 +9,14 @@
 			}
 		},
 		{
+			"path": "pages/commonEval/Evals",
+			"style": {
+				"navigationBarTitleText": "商品评价"
+				
+			}
+		},
+		
+		{
 			"path": "pages/search/Search",
 			"style": {
 				"navigationBarTitleText": "搜索",

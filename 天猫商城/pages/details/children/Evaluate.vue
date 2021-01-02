@@ -3,7 +3,7 @@
 		<view class="evaluate-top">
 			<view>商品评价({{commit.commlen}})</view>
 			<view class="evaluate-rig">
-				<text>查看全部</text>
+				<text @click="lookall(commit.parcontent[0].commid)">查看全部</text>
 				<image src="/static/details/quanbu.svg" mode="widthFix"></image>
 			</view>
 		</view>
@@ -36,6 +36,14 @@
 <script>
 	export default{
 		props:{commit: Object},
+		methods:{
+			lookall(id){
+				// 跳转所有评价界面
+				uni.navigateTo({
+				    url: '../commonEval/Evals?id='+id
+				});
+			}
+		}
 	}
 </script>
 

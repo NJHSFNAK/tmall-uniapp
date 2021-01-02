@@ -10,7 +10,7 @@
 			<!-- 顶部导航栏 -->
 			<view class="header-fixed backyes" v-show="!showAbs" :style="{opacity: styleObject}">
 				<view class="status_bar" :style=" 'margin-top:' + tophight.height + 'px;' "></view>
-				<top :topheight='topheight'></top>
+				<top :topheight='topheight' ref='top'></top>
 			</view>
 			<!-- 图片视频轮播 -->
 			<view>
@@ -45,9 +45,11 @@
 			<!-- 产品参数 -->
 			<parame></parame>
 			<!-- 商品评价 -->
-			<evaluate :commit='commit'></evaluate>
+			<evaluate :commit='commit' class="evaluate"></evaluate>
 			<!-- 商品详情 -->
-			<product :describe='describe'></product>
+			<product :describe='describe' class="produce"></product>
+			<!-- 商品底部 -->
+			<bottom :goodid='goodid'></bottom>
 	</view>
 </template>
 
@@ -63,9 +65,10 @@
 	import evaluate from './children/Evaluate.vue';
 	// 产品图片
 	import product from './children/Product.vue';
-	
+	// 底部
+	import bottom from './children/Bottom.vue';
 	export default{
-		components: {top,price,parame,evaluate,product},
+		components: {top,price,parame,evaluate,product,bottom},
 		data() {
 			return {
 				// 获取胶囊按钮的数据
@@ -89,7 +92,13 @@
 				// 获取到商品描述信息
 				describe:{},
 				// 商品评价信息
-				commit:{}
+				commit:{},
+				// 评价页高度
+				evalheight: 0,
+				// 详情页高度
+				proheight: 0,
+				// 商品id
+				goodid:''
 			}
 		},
 		methods: {
@@ -142,6 +151,8 @@
 				let detail= new this.$Request(this.$Urls.m().detailsurl+'?id='+id).modeget()
 				.then((res)=>{	
 					this.imagetext = res;
+					console.log(res);
+					this.goodid = res[0].id;
 					// 获取视频的播放地址
 					this.truevideo = this.imagetext[0].media[0].video
 					this.dots = this.truevideo === ''? true: false;
@@ -149,14 +160,13 @@
 					 let price = this.imagetext[0].describe;
 					 price['id'] = this.imagetext[0].id;
 					 this.describe = price;
-					 console.log(this.describe)
+					 // console.log(this.describe)
 				}).catch((err)=>{
 					console.log(err)
 				})
 				// 商品评论信息
 				new this.$Request(this.$Urls.m().commiturl+'?id='+id).modeget()
 				.then((res)=>{
-					console.log(res);
 					this.commit = res[0];
 				}).catch((err)=>{
 					console.log(err);
@@ -165,7 +175,35 @@
 			// 预览图片
 			previmg(index,imgArray){
 				new Logic(index,imgArray).previewImg();
-			}
+			},
+			// 子组件调用父组件
+			fathEr(index){
+				// evaluate是评价，produce是详情
+				let clsdata = index === 1? '.evaluate': '.produce';
+				const query = this.createSelectorQuery();
+				query.select(clsdata).boundingClientRect();
+				query.selectViewport().scrollOffset();
+				query.exec((res)=>{
+					let top = res[0].top+ res[1].scrollTop -(this.tophight.top+ this.tophight.height);
+					uni.pageScrollTo({
+						scrollTop: top,
+						duration: 300
+					})
+				})
+			},
+			// 获取各自的高度
+			top(cla){
+				const query = this.createSelectorQuery();
+				query.select(cla).boundingClientRect();
+				query.selectViewport().scrollOffset();
+				query.exec((res)=>{
+					if(cla === '.evaluate'){
+						this.evalheight =res[0].top+ res[1].scrollTop -(this.tophight.top+ this.tophight.height);
+					}else{
+						this.proheight = res[0].top+ res[1].scrollTop -(this.tophight.top+ this.tophight.height);
+					}
+				})
+			},
 		},
 		created() {
 			// 获取胶囊按钮的数据
@@ -173,14 +211,30 @@
 		},
 		mounted() {
 			this.videoPlay = uni.createVideoContext('myVideo');
+			this.top('.evaluate');
+			this.top('.produce');
+			new this.$Request().baseFun();
 		},
 		// 滚动监听的生命周期
 		onPageScroll(e) {
-			this.handleScroll(e.scrollTop)
+			this.handleScroll(e.scrollTop);
+			// evaluate是评价，produce是详情
+			if(e.scrollTop < this.evalheight){
+				this.$refs.top.change(0);
+			}else if(e.scrollTop < this.proheight){
+				this.$refs.top.change(1);
+			}else{
+				this.$refs.top.change(2);
+			}
 		},
 		onLoad() {
 			this.getRquest('5f8bbf2823954733542169a1');
-		}
+		},
+		computed: {
+			name() {
+				return this.data 
+			}
+		},
 	}
 </script>
 

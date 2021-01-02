@@ -24,9 +24,17 @@ const urls = class{
 		let parameurl = `${url}parameter`;
 		// 商品的评价
 		let commiturl = `${url}wxcommnt`;
+		// 商品的所有评价的标签
+		let comtag = `${url}comtag`;
+		// 商品的所有评价的所有内容
+		let comtconent = `${url}comtconent`;
+		// 商品收藏
+		let collecturl = `${url}enshrine`;
+		// 登录小程序
+		let loginurl = `${url}wxlogin`;
 		return{
 			bannerget,getrecommurl,billboardurl,commodcardurl,searchurl,detailsurl,parameurl,
-				commiturl
+				commiturl,comtag,comtconent,collecturl,loginurl
 		}
 	}
 }

@@ -6,6 +6,7 @@
     "price": "/pages/details/children/Price",
     "parame": "/pages/details/children/Parame",
     "evaluate": "/pages/details/children/Evaluate",
-    "product": "/pages/details/children/Product"
+    "product": "/pages/details/children/Product",
+    "bottom": "/pages/details/children/Bottom"
   }
 }

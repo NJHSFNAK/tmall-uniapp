@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/details/details",
+    "pages/commonEval/Evals",
     "pages/search/Search",
     "pages/index/index",
     "pages/sort/sort",
@@ -47,7 +48,7 @@
     ]
   },
   "usingComponents": {
-    "loader-on": "/pages/common/loading"
-  },
-  "sitemapLocation": "sitemap5.json"
+    "loader-on": "/pages/common/loading",
+    "model": "/pages/common/model"
+  }
 }

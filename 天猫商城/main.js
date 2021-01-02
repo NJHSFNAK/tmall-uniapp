@@ -23,6 +23,14 @@ import bus from './pages/commonJs/bus.js';
 // 全局使用
 Vue.prototype.$bus = bus;
 
+// 登录弹窗
+import model from './pages/common/model.vue';
+Vue.component('model',model);
+
+// 消息提示
+import toast from './pages/commonJs/toast.js';
+Vue.prototype.$Toast = toast;
+
 App.mpType = 'app';
 // 全局样式
 import './style/style.css';
