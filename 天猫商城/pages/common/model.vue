@@ -19,14 +19,16 @@
 	export default{
 		data() {
 			return {
-				modeling: false
+				modeling: false,
+				msg:'',
 			}
 		},
 		methods: {
 			cancel() {
 				this.modeling = false;
 			},
-			show() {
+			show(msg='') {
+				this.msg = msg;
 				this.modeling = true;
 			},
 			// 获取用户信息
@@ -36,6 +38,10 @@
 				new this.$Toast('登陆中').showloading();
 				let {userInfo,errMsg} = e.detail;
 				let data = await new wxLogin(userInfo,errMsg).login();
+				if(this.msg === 'coll'){
+					// 更新收藏状态
+					this.$bus.$emit('collict',{colldata: 'SUCCESS'})
+				}
 			}
 		},
 	}

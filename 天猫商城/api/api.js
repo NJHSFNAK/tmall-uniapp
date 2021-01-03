@@ -12,11 +12,11 @@ const request = class{
 				url:this.url,
 				method:'POST',
 				data: this.arg,
-				header:{Authorization: this.baseFun}
+				header:{Authorization:this.baseFun()}
 			})
 			.then((res)=>{
-				// resolve(res[1].data.data)
 				resolve(res[1].data)
+				// resolve(res[1].data.data)
 			})
 			.catch((err)=>{
 				reject(err)
@@ -28,10 +28,27 @@ const request = class{
 			uni.request({
 				url:this.url,
 				method:'GET',
-				header:{Authorization: this.baseFun}
+				header:{Authorization:this.baseFun()}
 			})
 			.then((res)=>{
 				resolve(res[1].data.data)
+				// resolve(res[1].data)
+			})
+			.catch((err)=>{
+				reject(err)
+			})
+		})
+	}
+	modeGet(){
+		return new Promise((resolve,reject)=>{
+			uni.request({
+				url:this.url,
+				method:'GET',
+				header:{Authorization:this.baseFun()}
+			})
+			.then((res)=>{
+				// resolve(res[1].data.data)
+				resolve(res[1].data)
 			})
 			.catch((err)=>{
 				reject(err)

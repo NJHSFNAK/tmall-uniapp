@@ -32,9 +32,20 @@ const urls = class{
 		let collecturl = `${url}enshrine`;
 		// 登录小程序
 		let loginurl = `${url}wxlogin`;
+		// 判断商品是否已经收藏
+		let pancolurl = `${url}collection`;
+		// 购物车商品
+		let shopcarurl = `${url}mycart`;
+		// 获取sku数据
+		let skuurl = `${url}wxsku`;
+		// 获取某个商品的库存和数
+		let goodskuurl = `${url}querysku`;
+		// 加入购物车
+		let addcarurl = `${url}atcart`;
 		return{
 			bannerget,getrecommurl,billboardurl,commodcardurl,searchurl,detailsurl,parameurl,
-				commiturl,comtag,comtconent,collecturl,loginurl
+				commiturl,comtag,comtconent,collecturl,loginurl,pancolurl,shopcarurl,skuurl,goodskuurl,
+					addcarurl
 		}
 	}
 }

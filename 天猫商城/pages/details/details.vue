@@ -49,7 +49,9 @@
 			<!-- 商品详情 -->
 			<product :describe='describe' class="produce"></product>
 			<!-- 商品底部 -->
-			<bottom :goodid='goodid'></bottom>
+			<bottom :goodid='goodid' :collectdata='collectdata' :shopcar='shopcar'></bottom>
+			<!-- 公共的sku -->
+			<addtocart ref='addtocart' :skudata='skudata'></addtocart>
 	</view>
 </template>
 
@@ -67,8 +69,11 @@
 	import product from './children/Product.vue';
 	// 底部
 	import bottom from './children/Bottom.vue';
+	// 公用的sku
+	import addtocart from '../common/addToCart.vue';
+	
 	export default{
-		components: {top,price,parame,evaluate,product,bottom},
+		components: {top,price,parame,evaluate,product,bottom,addtocart},
 		data() {
 			return {
 				// 获取胶囊按钮的数据
@@ -98,7 +103,13 @@
 				// 详情页高度
 				proheight: 0,
 				// 商品id
-				goodid:''
+				goodid:'',
+				// 商品是否收藏
+				collectdata:{},
+				// 购物车数据
+				shopcar:{},
+				// sku数据
+				skudata:[]
 			}
 		},
 		methods: {
@@ -146,12 +157,11 @@
 				}
 			},
 			// 请求数据
-			getRquest(id){
+			async getRquest(id){
 				// 轮播信息、价格参数信息
 				let detail= new this.$Request(this.$Urls.m().detailsurl+'?id='+id).modeget()
 				.then((res)=>{	
 					this.imagetext = res;
-					console.log(res);
 					this.goodid = res[0].id;
 					// 获取视频的播放地址
 					this.truevideo = this.imagetext[0].media[0].video
@@ -160,7 +170,6 @@
 					 let price = this.imagetext[0].describe;
 					 price['id'] = this.imagetext[0].id;
 					 this.describe = price;
-					 // console.log(this.describe)
 				}).catch((err)=>{
 					console.log(err)
 				})
@@ -171,6 +180,23 @@
 				}).catch((err)=>{
 					console.log(err);
 				})
+				// 判断商品是否已经收藏
+				let goodcollect = await new this.$Request(this.$Urls.m().pancolurl+'?id='+id).modeGet();
+				this.collectdata = goodcollect.msg;
+				// 获取购物车数据
+				let shopcar = await new this.$Request(this.$Urls.m().shopcarurl+'?id='+id).modeGet();
+				this.shopcar = shopcar;
+				// 获取sku数据
+				let skudata = await new this.$Request(this.$Urls.m().skuurl+'?id='+id).modeGet();
+				let defaultdata = {
+					image: this.imagetext[0].media[0].imgArray[0],
+					price: this.imagetext[0].describe.Trueprice,
+					totalstock: this.imagetext[0].describe.Total_stock,
+					id: this.imagetext[0].id,
+					title: this.imagetext[0].describe.title
+				}
+				this.skudata = skudata.data;
+				this.skudata.push(defaultdata);
 			},
 			// 预览图片
 			previmg(index,imgArray){
@@ -204,6 +230,10 @@
 					}
 				})
 			},
+			// 调用addtocart方法
+			addtocart(mean){
+				this.$refs.addtocart.showcar(mean);
+			}
 		},
 		created() {
 			// 获取胶囊按钮的数据

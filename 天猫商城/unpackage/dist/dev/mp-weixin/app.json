@@ -6,7 +6,8 @@
     "pages/index/index",
     "pages/sort/sort",
     "pages/shopping/shopping",
-    "pages/profile/profile"
+    "pages/profile/profile",
+    "pages/details/children/Bottom"
   ],
   "subPackages": [],
   "window": {
@@ -50,5 +51,6 @@
   "usingComponents": {
     "loader-on": "/pages/common/loading",
     "model": "/pages/common/model"
-  }
+  },
+  "sitemapLocation": "sitemap20.json"
 }

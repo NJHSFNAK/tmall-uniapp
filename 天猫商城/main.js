@@ -1,5 +1,8 @@
-import Vue from 'vue'
-import App from './App'
+import Vue from 'vue';
+import App from './App';
+// vuex
+import store from './store/index.js';
+Vue.prototype.$store = store;
 
 // 请求方法
 import request from './api/api.js';

@@ -8,7 +8,7 @@
 			<view class="shopping-text middle">
 				<image src="/static/details/gouwuche.svg" mode="widthFix"/>
 				<text>购物车</text>
-				<text></text>
+				<text>{{cartnum}}</text>
 			</view>
 			<!-- 未收藏 -->
 			<view class="shopping-text" @click="collect(1,goodid)" v-if="collects ==0">
@@ -20,8 +20,8 @@
 				<image src="/static/details/yishoucang.svg" mode="widthFix"/>
 				<text>已收藏</text>
 			</view>
-			<view class="join join-right">加入购物车</view>
-			<view class="join join-left">立即购买</view>
+			<view class="join join-right" @click="showcarFun('002')">加入购物车</view>
+			<view class="join join-left" @click="showcarFun('003')">立即购买</view>
 		</view>
 	<!-- 登陆弹窗 -->
 	<model ref='modelRef'></model>
@@ -31,12 +31,15 @@
 <script>
 	export default{
 		props: {
-			goodid: String
+			goodid: String,
+			collectdata: Object,
+			shopcar: Object
 		},
 		data() {
 			return {
 				// key: value
-				collects: 0
+				collects: 0,
+				cartnum: 0, 
 			}
 		},
 		methods:{
@@ -49,7 +52,7 @@
 					let {errcode} = enshrine.msg;
 					if(errcode == '401'){
 						// 要去登录
-						this.$refs.modelRef.show()
+						this.$refs.modelRef.show('coll');
 					}else if(errcode == '200'){
 						this.collects = enshrine.msg.collects;
 					}
@@ -57,7 +60,47 @@
 					//TODO handle the exception
 				}
 			},
-		}
+			async refresh(){
+				// 更新商品是否收藏信息
+			 let goodcollect = await new this.$Request(this.$Urls.m().pancolurl+'?id='+this.goodid).modeGet();
+			 this.collects = goodcollect.msg.collects;
+			 let shopcar = await new this.$Request(this.$Urls.m().shopcarurl+'?id='+this.goodid).modeGet();
+			 // 更新购物车信息
+			 this.cartnum = shopcar.data.length;
+			},
+			// 展示购物车界面
+			showcarFun(mean){
+				this.$parent.addtocart(mean);
+			}
+		},
+		// 接收登录组件传过来的值
+		created() {
+			this.$bus.$on('collict',((res)=>{
+				if(res.colldata === 'SUCCESS'){
+					// 更新收藏状态
+				}
+				this.refresh();
+			}))
+		},	
+		watch: {
+			// 获取该商品是否收藏
+			collectdata(newValue, oldValue) {
+				let {collects} = newValue;
+				this.collects = collects;
+			},
+			shopcar(newValue, oldValue){
+				console.log(newValue)
+				if(newValue.msg.errcode){
+					this.cartnum = 0;
+				}else if(newValue.msg === 'SUCCESS'){
+					this.cartnum = newValue.data.length;
+				}
+			},
+			'$store.state.cartnum'(newValue,oldValue){
+				this.cartnum = newValue.nums;
+			}
+		},
+		
 	}
 </script>
 
