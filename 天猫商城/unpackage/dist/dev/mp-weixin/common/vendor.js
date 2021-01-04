@@ -1858,475 +1858,6 @@ function normalizeComponent (
 /***/ }),
 
 /***/ 11:
-/*!*******************************!*\
-  !*** D:/毕业设计/天猫商城/api/api.js ***!
-  \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;} // request请求
-var Base64 = __webpack_require__(/*! ./base64.js */ 12).Base64;
-var request = /*#__PURE__*/function () {
-  function request(url, arg) {_classCallCheck(this, request);
-    this.url = url;
-    this.arg = arg;
-  }
-  // post请求
-  _createClass(request, [{ key: "modepost", value: function modepost() {var _this = this;
-      return new Promise(function (resolve, reject) {
-        uni.request({
-          url: _this.url,
-          method: 'POST',
-          data: _this.arg,
-          header: { Authorization: _this.baseFun() } }).
-
-        then(function (res) {
-          resolve(res[1].data);
-          // resolve(res[1].data.data)
-        }).
-        catch(function (err) {
-          reject(err);
-        });
-      });
-    } }, { key: "modeget", value: function modeget()
-    {var _this2 = this;
-      return new Promise(function (resolve, reject) {
-        uni.request({
-          url: _this2.url,
-          method: 'GET',
-          header: { Authorization: _this2.baseFun() } }).
-
-        then(function (res) {
-          resolve(res[1].data.data);
-          // resolve(res[1].data)
-        }).
-        catch(function (err) {
-          reject(err);
-        });
-      });
-    } }, { key: "modeGet", value: function modeGet()
-    {var _this3 = this;
-      return new Promise(function (resolve, reject) {
-        uni.request({
-          url: _this3.url,
-          method: 'GET',
-          header: { Authorization: _this3.baseFun() } }).
-
-        then(function (res) {
-          // resolve(res[1].data.data)
-          resolve(res[1].data);
-        }).
-        catch(function (err) {
-          reject(err);
-        });
-      });
-    }
-    // 加密token
-  }, { key: "baseFun", value: function baseFun() {
-      var token = uni.getStorageSync('wxuser').token;
-      var base64 = Base64.encode(token + ':');
-      return 'Basic ' + base64;
-      console.log('Basic ' + base64);
-    } }]);return request;}();var _default =
-
-
-request;exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
-
-/***/ }),
-
-/***/ 12:
-/*!**********************************!*\
-  !*** D:/毕业设计/天猫商城/api/base64.js ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(global) {var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
- *  base64.js
- *
- *  Licensed under the BSD 3-Clause License.
- *    http://opensource.org/licenses/BSD-3-Clause
- *
- *  References:
- *    http://en.wikipedia.org/wiki/Base64
- */
-;(function (global, factory) {
-   true ?
-  module.exports = factory(global) :
-  undefined;
-})(
-typeof self !== 'undefined' ? self :
-typeof window !== 'undefined' ? window :
-typeof global !== 'undefined' ? global :
-this,
-function (global) {
-  'use strict';
-  // existing version for noConflict()
-  global = global || {};
-  var _Base64 = global.Base64;
-  var version = "2.5.2";
-  // if node.js and NOT React Native, we use Buffer
-  var buffer;
-  if ( true && module.exports) {
-    try {
-      buffer = eval("require('buffer').Buffer");
-    } catch (err) {
-      buffer = undefined;
-    }
-  }
-  // constants
-  var b64chars =
-  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
-  var b64tab = function (bin) {
-    var t = {};
-    for (var i = 0, l = bin.length; i < l; i++) {t[bin.charAt(i)] = i;}
-    return t;
-  }(b64chars);
-  var fromCharCode = String.fromCharCode;
-  // encoder stuff
-  var cb_utob = function cb_utob(c) {
-    if (c.length < 2) {
-      var cc = c.charCodeAt(0);
-      return cc < 0x80 ? c :
-      cc < 0x800 ? fromCharCode(0xc0 | cc >>> 6) +
-      fromCharCode(0x80 | cc & 0x3f) :
-      fromCharCode(0xe0 | cc >>> 12 & 0x0f) +
-      fromCharCode(0x80 | cc >>> 6 & 0x3f) +
-      fromCharCode(0x80 | cc & 0x3f);
-    } else {
-      var cc = 0x10000 +
-      (c.charCodeAt(0) - 0xD800) * 0x400 + (
-      c.charCodeAt(1) - 0xDC00);
-      return fromCharCode(0xf0 | cc >>> 18 & 0x07) +
-      fromCharCode(0x80 | cc >>> 12 & 0x3f) +
-      fromCharCode(0x80 | cc >>> 6 & 0x3f) +
-      fromCharCode(0x80 | cc & 0x3f);
-    }
-  };
-  var re_utob = /[\uD800-\uDBFF][\uDC00-\uDFFFF]|[^\x00-\x7F]/g;
-  var utob = function utob(u) {
-    return u.replace(re_utob, cb_utob);
-  };
-  var cb_encode = function cb_encode(ccc) {
-    var padlen = [0, 2, 1][ccc.length % 3],
-    ord = ccc.charCodeAt(0) << 16 |
-    (ccc.length > 1 ? ccc.charCodeAt(1) : 0) << 8 | (
-    ccc.length > 2 ? ccc.charCodeAt(2) : 0),
-    chars = [
-    b64chars.charAt(ord >>> 18),
-    b64chars.charAt(ord >>> 12 & 63),
-    padlen >= 2 ? '=' : b64chars.charAt(ord >>> 6 & 63),
-    padlen >= 1 ? '=' : b64chars.charAt(ord & 63)];
-
-    return chars.join('');
-  };
-  var btoa = global.btoa ? function (b) {
-    return global.btoa(b);
-  } : function (b) {
-    return b.replace(/[\s\S]{1,3}/g, cb_encode);
-  };
-  var _encode = function _encode(u) {
-    var isUint8Array = Object.prototype.toString.call(u) === '[object Uint8Array]';
-    return isUint8Array ? u.toString('base64') :
-    btoa(utob(String(u)));
-  };
-  var encode = function encode(u, urisafe) {
-    return !urisafe ?
-    _encode(u) :
-    _encode(String(u)).replace(/[+\/]/g, function (m0) {
-      return m0 == '+' ? '-' : '_';
-    }).replace(/=/g, '');
-  };
-  var encodeURI = function encodeURI(u) {return encode(u, true);};
-  // decoder stuff
-  var re_btou = /[\xC0-\xDF][\x80-\xBF]|[\xE0-\xEF][\x80-\xBF]{2}|[\xF0-\xF7][\x80-\xBF]{3}/g;
-  var cb_btou = function cb_btou(cccc) {
-    switch (cccc.length) {
-      case 4:
-        var cp = (0x07 & cccc.charCodeAt(0)) << 18 |
-        (0x3f & cccc.charCodeAt(1)) << 12 |
-        (0x3f & cccc.charCodeAt(2)) << 6 |
-        0x3f & cccc.charCodeAt(3),
-        offset = cp - 0x10000;
-        return fromCharCode((offset >>> 10) + 0xD800) +
-        fromCharCode((offset & 0x3FF) + 0xDC00);
-      case 3:
-        return fromCharCode(
-        (0x0f & cccc.charCodeAt(0)) << 12 |
-        (0x3f & cccc.charCodeAt(1)) << 6 |
-        0x3f & cccc.charCodeAt(2));
-
-      default:
-        return fromCharCode(
-        (0x1f & cccc.charCodeAt(0)) << 6 |
-        0x3f & cccc.charCodeAt(1));}
-
-
-  };
-  var btou = function btou(b) {
-    return b.replace(re_btou, cb_btou);
-  };
-  var cb_decode = function cb_decode(cccc) {
-    var len = cccc.length,
-    padlen = len % 4,
-    n = (len > 0 ? b64tab[cccc.charAt(0)] << 18 : 0) | (
-    len > 1 ? b64tab[cccc.charAt(1)] << 12 : 0) | (
-    len > 2 ? b64tab[cccc.charAt(2)] << 6 : 0) | (
-    len > 3 ? b64tab[cccc.charAt(3)] : 0),
-    chars = [
-    fromCharCode(n >>> 16),
-    fromCharCode(n >>> 8 & 0xff),
-    fromCharCode(n & 0xff)];
-
-    chars.length -= [0, 0, 2, 1][padlen];
-    return chars.join('');
-  };
-  var _atob = global.atob ? function (a) {
-    return global.atob(a);
-  } : function (a) {
-    return a.replace(/\S{1,4}/g, cb_decode);
-  };
-  var atob = function atob(a) {
-    return _atob(String(a).replace(/[^A-Za-z0-9\+\/]/g, ''));
-  };
-  var _decode = buffer ?
-  buffer.from && Uint8Array && buffer.from !== Uint8Array.from ?
-  function (a) {
-    return (a.constructor === buffer.constructor ?
-    a : buffer.from(a, 'base64')).toString();
-  } :
-  function (a) {
-    return (a.constructor === buffer.constructor ?
-    a : new buffer(a, 'base64')).toString();
-  } :
-  function (a) {return btou(_atob(a));};
-  var decode = function decode(a) {
-    return _decode(
-    String(a).replace(/[-_]/g, function (m0) {return m0 == '-' ? '+' : '/';}).
-    replace(/[^A-Za-z0-9\+\/]/g, ''));
-
-  };
-  var noConflict = function noConflict() {
-    var Base64 = global.Base64;
-    global.Base64 = _Base64;
-    return Base64;
-  };
-  // export Base64
-  global.Base64 = {
-    VERSION: version,
-    atob: atob,
-    btoa: btoa,
-    fromBase64: decode,
-    toBase64: encode,
-    utob: utob,
-    encode: encode,
-    encodeURI: encodeURI,
-    btou: btou,
-    decode: decode,
-    noConflict: noConflict,
-    __buffer__: buffer };
-
-  // if ES5 is available, make Base64.extendString() available
-  if (typeof Object.defineProperty === 'function') {
-    var noEnum = function noEnum(v) {
-      return { value: v, enumerable: false, writable: true, configurable: true };
-    };
-    global.Base64.extendString = function () {
-      Object.defineProperty(
-      String.prototype, 'fromBase64', noEnum(function () {
-        return decode(this);
-      }));
-      Object.defineProperty(
-      String.prototype, 'toBase64', noEnum(function (urisafe) {
-        return encode(this, urisafe);
-      }));
-      Object.defineProperty(
-      String.prototype, 'toBase64URI', noEnum(function () {
-        return encode(this, true);
-      }));
-    };
-  }
-  //
-  // export Base64 to the namespace
-  //
-  if (global['Meteor']) {// Meteor.js
-    Base64 = global.Base64;
-  }
-  // module.exports and AMD are mutually exclusive.
-  // module.exports has precedence.
-  if ( true && module.exports) {
-    module.exports.Base64 = global.Base64;
-  } else
-  if (true) {
-    // AMD. Register as an anonymous module.
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {return global.Base64;}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-  }
-  // that's it!
-  return { Base64: global.Base64 };
-});
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../火狐下载文件/HBuilderX/plugins/uniapp-cli/node_modules/webpack/buildin/global.js */ 3)))
-
-/***/ }),
-
-/***/ 13:
-/*!***********************************!*\
-  !*** D:/毕业设计/天猫商城/api/request.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;} // 数据请求
-// 请求地址
-var url = 'https://meituan.thexxdd.cn/api/';
-
-var urls = /*#__PURE__*/function () {
-  function urls(arg) {_classCallCheck(this, urls);
-
-  }
-  // 静态方法
-  _createClass(urls, null, [{ key: "m", value: function m() {
-      // 首页--轮播接口
-      var bannerget = "".concat(url, "getbanner");
-      // 抢购接口
-      var getrecommurl = "".concat(url, "recom");
-      // 榜单接口
-      var billboardurl = "".concat(url, "billboard");
-      // 卡片流接口
-      var commodcardurl = "".concat(url, "commodcrad");
-      // 请求搜索接口
-      var searchurl = "".concat(url, "search");
-      // 详情页接口
-      var detailsurl = "".concat(url, "introduce");
-      // 商品参数信息
-      var parameurl = "".concat(url, "parameter");
-      // 商品的评价
-      var commiturl = "".concat(url, "wxcommnt");
-      // 商品的所有评价的标签
-      var comtag = "".concat(url, "comtag");
-      // 商品的所有评价的所有内容
-      var comtconent = "".concat(url, "comtconent");
-      // 商品收藏
-      var collecturl = "".concat(url, "enshrine");
-      // 登录小程序
-      var loginurl = "".concat(url, "wxlogin");
-      // 判断商品是否已经收藏
-      var pancolurl = "".concat(url, "collection");
-      // 购物车商品
-      var shopcarurl = "".concat(url, "mycart");
-      // 获取sku数据
-      var skuurl = "".concat(url, "wxsku");
-      // 获取某个商品的库存和数
-      var goodskuurl = "".concat(url, "querysku");
-      // 加入购物车
-      var addcarurl = "".concat(url, "atcart");
-      return {
-        bannerget: bannerget, getrecommurl: getrecommurl, billboardurl: billboardurl, commodcardurl: commodcardurl, searchurl: searchurl, detailsurl: detailsurl, parameurl: parameurl,
-        commiturl: commiturl, comtag: comtag, comtconent: comtconent, collecturl: collecturl, loginurl: loginurl, pancolurl: pancolurl, shopcarurl: shopcarurl, skuurl: skuurl, goodskuurl: goodskuurl,
-        addcarurl: addcarurl };
-
-    } }]);return urls;}();var _default =
-
-
-urls;exports.default = _default;
-
-/***/ }),
-
-/***/ 14:
-/*!***************************************!*\
-  !*** D:/毕业设计/天猫商城/pattern/animat.css ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-    if(false) { var cssReload; }
-  
-
-/***/ }),
-
-/***/ 15:
-/*!***************************************!*\
-  !*** D:/毕业设计/天猫商城/pattern/styles.css ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-    if(false) { var cssReload; }
-  
-
-/***/ }),
-
-/***/ 16:
-/*!******************************************!*\
-  !*** D:/毕业设计/天猫商城/pages/commonJs/bus.js ***!
-  \******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} // 组件传值
-var _default = new _vue.default();exports.default = _default;
-
-/***/ }),
-
-/***/ 17:
-/*!********************************************!*\
-  !*** D:/毕业设计/天猫商城/pages/commonJs/toast.js ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;} // 弹窗
-var Toast = /*#__PURE__*/function () {
-  function Toast(title) {var icon = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'success';var duration = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1500;var mask = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;_classCallCheck(this, Toast);
-    this.title = title;
-    this.icon = icon;
-    this.duration = duration;
-    this.mask = mask;
-  }
-  // 消息提示框,自动消失
-  _createClass(Toast, [{ key: "showtoast", value: function showtoast() {
-      wx.showToast({
-        title: this.title,
-        icon: this.icon,
-        duration: this.duration,
-        mask: this.mask });
-
-    }
-    // 消息提示框，手动消失
-  }, { key: "showloading", value: function showloading() {
-      wx.showLoading({
-        title: this.title,
-        mask: this.mask });
-
-    } }]);return Toast;}();var _default =
-
-
-Toast;exports.default = _default;
-
-/***/ }),
-
-/***/ 18:
-/*!************************************!*\
-  !*** D:/毕业设计/天猫商城/style/style.css ***!
-  \************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-    if(false) { var cssReload; }
-  
-
-/***/ }),
-
-/***/ 195:
 /*!***********************************!*\
   !*** D:/毕业设计/天猫商城/store/index.js ***!
   \***********************************/
@@ -2336,7 +1867,7 @@ Toast;exports.default = _default;
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ 196));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} // vuex
+var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} // vuex
 _vue.default.use(_vuex.default);
 
 var state = {
@@ -2360,7 +1891,7 @@ new _vuex.default.Store({
 
 /***/ }),
 
-/***/ 196:
+/***/ 12:
 /*!********************************************!*\
   !*** ./node_modules/vuex/dist/vuex.esm.js ***!
   \********************************************/
@@ -3470,6 +3001,464 @@ var index = {
 
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../webpack/buildin/global.js */ 3)))
+
+/***/ }),
+
+/***/ 13:
+/*!*******************************!*\
+  !*** D:/毕业设计/天猫商城/api/api.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;} // request请求
+var Base64 = __webpack_require__(/*! ./base64.js */ 14).Base64;
+var request = /*#__PURE__*/function () {
+  function request(url, arg) {_classCallCheck(this, request);
+    this.url = url;
+    this.arg = arg;
+  }
+  // post请求
+  _createClass(request, [{ key: "modepost", value: function modepost() {var _this = this;
+      return new Promise(function (resolve, reject) {
+        uni.request({
+          url: _this.url,
+          method: 'POST',
+          data: _this.arg,
+          header: { Authorization: _this.baseFun() } }).
+
+        then(function (res) {
+          resolve(res[1].data);
+          // resolve(res[1].data.data)
+        }).
+        catch(function (err) {
+          reject(err);
+        });
+      });
+    } }, { key: "modeget", value: function modeget()
+    {var _this2 = this;
+      return new Promise(function (resolve, reject) {
+        uni.request({
+          url: _this2.url,
+          method: 'GET',
+          header: { Authorization: _this2.baseFun() } }).
+
+        then(function (res) {
+          resolve(res[1].data.data);
+          // resolve(res[1].data)
+        }).
+        catch(function (err) {
+          reject(err);
+        });
+      });
+    } }, { key: "modeGet", value: function modeGet()
+    {var _this3 = this;
+      return new Promise(function (resolve, reject) {
+        uni.request({
+          url: _this3.url,
+          method: 'GET',
+          header: { Authorization: _this3.baseFun() } }).
+
+        then(function (res) {
+          // resolve(res[1].data.data)
+          resolve(res[1].data);
+        }).
+        catch(function (err) {
+          reject(err);
+        });
+      });
+    }
+    // 加密token
+  }, { key: "baseFun", value: function baseFun() {
+      var token = uni.getStorageSync('wxuser').token;
+      var base64 = Base64.encode(token + ':');
+      return 'Basic ' + base64;
+      console.log('Basic ' + base64);
+    } }]);return request;}();var _default =
+
+
+request;exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 14:
+/*!**********************************!*\
+  !*** D:/毕业设计/天猫商城/api/base64.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global) {var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
+ *  base64.js
+ *
+ *  Licensed under the BSD 3-Clause License.
+ *    http://opensource.org/licenses/BSD-3-Clause
+ *
+ *  References:
+ *    http://en.wikipedia.org/wiki/Base64
+ */
+;(function (global, factory) {
+   true ?
+  module.exports = factory(global) :
+  undefined;
+})(
+typeof self !== 'undefined' ? self :
+typeof window !== 'undefined' ? window :
+typeof global !== 'undefined' ? global :
+this,
+function (global) {
+  'use strict';
+  // existing version for noConflict()
+  global = global || {};
+  var _Base64 = global.Base64;
+  var version = "2.5.2";
+  // if node.js and NOT React Native, we use Buffer
+  var buffer;
+  if ( true && module.exports) {
+    try {
+      buffer = eval("require('buffer').Buffer");
+    } catch (err) {
+      buffer = undefined;
+    }
+  }
+  // constants
+  var b64chars =
+  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+  var b64tab = function (bin) {
+    var t = {};
+    for (var i = 0, l = bin.length; i < l; i++) {t[bin.charAt(i)] = i;}
+    return t;
+  }(b64chars);
+  var fromCharCode = String.fromCharCode;
+  // encoder stuff
+  var cb_utob = function cb_utob(c) {
+    if (c.length < 2) {
+      var cc = c.charCodeAt(0);
+      return cc < 0x80 ? c :
+      cc < 0x800 ? fromCharCode(0xc0 | cc >>> 6) +
+      fromCharCode(0x80 | cc & 0x3f) :
+      fromCharCode(0xe0 | cc >>> 12 & 0x0f) +
+      fromCharCode(0x80 | cc >>> 6 & 0x3f) +
+      fromCharCode(0x80 | cc & 0x3f);
+    } else {
+      var cc = 0x10000 +
+      (c.charCodeAt(0) - 0xD800) * 0x400 + (
+      c.charCodeAt(1) - 0xDC00);
+      return fromCharCode(0xf0 | cc >>> 18 & 0x07) +
+      fromCharCode(0x80 | cc >>> 12 & 0x3f) +
+      fromCharCode(0x80 | cc >>> 6 & 0x3f) +
+      fromCharCode(0x80 | cc & 0x3f);
+    }
+  };
+  var re_utob = /[\uD800-\uDBFF][\uDC00-\uDFFFF]|[^\x00-\x7F]/g;
+  var utob = function utob(u) {
+    return u.replace(re_utob, cb_utob);
+  };
+  var cb_encode = function cb_encode(ccc) {
+    var padlen = [0, 2, 1][ccc.length % 3],
+    ord = ccc.charCodeAt(0) << 16 |
+    (ccc.length > 1 ? ccc.charCodeAt(1) : 0) << 8 | (
+    ccc.length > 2 ? ccc.charCodeAt(2) : 0),
+    chars = [
+    b64chars.charAt(ord >>> 18),
+    b64chars.charAt(ord >>> 12 & 63),
+    padlen >= 2 ? '=' : b64chars.charAt(ord >>> 6 & 63),
+    padlen >= 1 ? '=' : b64chars.charAt(ord & 63)];
+
+    return chars.join('');
+  };
+  var btoa = global.btoa ? function (b) {
+    return global.btoa(b);
+  } : function (b) {
+    return b.replace(/[\s\S]{1,3}/g, cb_encode);
+  };
+  var _encode = function _encode(u) {
+    var isUint8Array = Object.prototype.toString.call(u) === '[object Uint8Array]';
+    return isUint8Array ? u.toString('base64') :
+    btoa(utob(String(u)));
+  };
+  var encode = function encode(u, urisafe) {
+    return !urisafe ?
+    _encode(u) :
+    _encode(String(u)).replace(/[+\/]/g, function (m0) {
+      return m0 == '+' ? '-' : '_';
+    }).replace(/=/g, '');
+  };
+  var encodeURI = function encodeURI(u) {return encode(u, true);};
+  // decoder stuff
+  var re_btou = /[\xC0-\xDF][\x80-\xBF]|[\xE0-\xEF][\x80-\xBF]{2}|[\xF0-\xF7][\x80-\xBF]{3}/g;
+  var cb_btou = function cb_btou(cccc) {
+    switch (cccc.length) {
+      case 4:
+        var cp = (0x07 & cccc.charCodeAt(0)) << 18 |
+        (0x3f & cccc.charCodeAt(1)) << 12 |
+        (0x3f & cccc.charCodeAt(2)) << 6 |
+        0x3f & cccc.charCodeAt(3),
+        offset = cp - 0x10000;
+        return fromCharCode((offset >>> 10) + 0xD800) +
+        fromCharCode((offset & 0x3FF) + 0xDC00);
+      case 3:
+        return fromCharCode(
+        (0x0f & cccc.charCodeAt(0)) << 12 |
+        (0x3f & cccc.charCodeAt(1)) << 6 |
+        0x3f & cccc.charCodeAt(2));
+
+      default:
+        return fromCharCode(
+        (0x1f & cccc.charCodeAt(0)) << 6 |
+        0x3f & cccc.charCodeAt(1));}
+
+
+  };
+  var btou = function btou(b) {
+    return b.replace(re_btou, cb_btou);
+  };
+  var cb_decode = function cb_decode(cccc) {
+    var len = cccc.length,
+    padlen = len % 4,
+    n = (len > 0 ? b64tab[cccc.charAt(0)] << 18 : 0) | (
+    len > 1 ? b64tab[cccc.charAt(1)] << 12 : 0) | (
+    len > 2 ? b64tab[cccc.charAt(2)] << 6 : 0) | (
+    len > 3 ? b64tab[cccc.charAt(3)] : 0),
+    chars = [
+    fromCharCode(n >>> 16),
+    fromCharCode(n >>> 8 & 0xff),
+    fromCharCode(n & 0xff)];
+
+    chars.length -= [0, 0, 2, 1][padlen];
+    return chars.join('');
+  };
+  var _atob = global.atob ? function (a) {
+    return global.atob(a);
+  } : function (a) {
+    return a.replace(/\S{1,4}/g, cb_decode);
+  };
+  var atob = function atob(a) {
+    return _atob(String(a).replace(/[^A-Za-z0-9\+\/]/g, ''));
+  };
+  var _decode = buffer ?
+  buffer.from && Uint8Array && buffer.from !== Uint8Array.from ?
+  function (a) {
+    return (a.constructor === buffer.constructor ?
+    a : buffer.from(a, 'base64')).toString();
+  } :
+  function (a) {
+    return (a.constructor === buffer.constructor ?
+    a : new buffer(a, 'base64')).toString();
+  } :
+  function (a) {return btou(_atob(a));};
+  var decode = function decode(a) {
+    return _decode(
+    String(a).replace(/[-_]/g, function (m0) {return m0 == '-' ? '+' : '/';}).
+    replace(/[^A-Za-z0-9\+\/]/g, ''));
+
+  };
+  var noConflict = function noConflict() {
+    var Base64 = global.Base64;
+    global.Base64 = _Base64;
+    return Base64;
+  };
+  // export Base64
+  global.Base64 = {
+    VERSION: version,
+    atob: atob,
+    btoa: btoa,
+    fromBase64: decode,
+    toBase64: encode,
+    utob: utob,
+    encode: encode,
+    encodeURI: encodeURI,
+    btou: btou,
+    decode: decode,
+    noConflict: noConflict,
+    __buffer__: buffer };
+
+  // if ES5 is available, make Base64.extendString() available
+  if (typeof Object.defineProperty === 'function') {
+    var noEnum = function noEnum(v) {
+      return { value: v, enumerable: false, writable: true, configurable: true };
+    };
+    global.Base64.extendString = function () {
+      Object.defineProperty(
+      String.prototype, 'fromBase64', noEnum(function () {
+        return decode(this);
+      }));
+      Object.defineProperty(
+      String.prototype, 'toBase64', noEnum(function (urisafe) {
+        return encode(this, urisafe);
+      }));
+      Object.defineProperty(
+      String.prototype, 'toBase64URI', noEnum(function () {
+        return encode(this, true);
+      }));
+    };
+  }
+  //
+  // export Base64 to the namespace
+  //
+  if (global['Meteor']) {// Meteor.js
+    Base64 = global.Base64;
+  }
+  // module.exports and AMD are mutually exclusive.
+  // module.exports has precedence.
+  if ( true && module.exports) {
+    module.exports.Base64 = global.Base64;
+  } else
+  if (true) {
+    // AMD. Register as an anonymous module.
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {return global.Base64;}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+  }
+  // that's it!
+  return { Base64: global.Base64 };
+});
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../火狐下载文件/HBuilderX/plugins/uniapp-cli/node_modules/webpack/buildin/global.js */ 3)))
+
+/***/ }),
+
+/***/ 15:
+/*!***********************************!*\
+  !*** D:/毕业设计/天猫商城/api/request.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;} // 数据请求
+// 请求地址
+var url = 'https://meituan.thexxdd.cn/api/';
+
+var urls = /*#__PURE__*/function () {
+  function urls(arg) {_classCallCheck(this, urls);
+
+  }
+  // 静态方法
+  _createClass(urls, null, [{ key: "m", value: function m() {
+      // 首页--轮播接口
+      var bannerget = "".concat(url, "getbanner");
+      // 抢购接口
+      var getrecommurl = "".concat(url, "recom");
+      // 榜单接口
+      var billboardurl = "".concat(url, "billboard");
+      // 卡片流接口
+      var commodcardurl = "".concat(url, "commodcrad");
+      // 请求搜索接口
+      var searchurl = "".concat(url, "search");
+      // 详情页接口
+      var detailsurl = "".concat(url, "introduce");
+      // 商品参数信息
+      var parameurl = "".concat(url, "parameter");
+      // 商品的评价
+      var commiturl = "".concat(url, "wxcommnt");
+      // 商品的所有评价的标签
+      var comtag = "".concat(url, "comtag");
+      // 商品的所有评价的所有内容
+      var comtconent = "".concat(url, "comtconent");
+      // 商品收藏
+      var collecturl = "".concat(url, "enshrine");
+      // 登录小程序
+      var loginurl = "".concat(url, "wxlogin");
+      // 判断商品是否已经收藏
+      var pancolurl = "".concat(url, "collection");
+      // 购物车商品
+      var shopcarurl = "".concat(url, "mycart");
+      // 获取sku数据
+      var skuurl = "".concat(url, "wxsku");
+      // 获取某个商品的库存和数
+      var goodskuurl = "".concat(url, "querysku");
+      // 加入购物车
+      var addcarurl = "".concat(url, "atcart");
+      // 校验登录状态
+      var tokenurl = "".concat(url, "tokening");
+      return {
+        bannerget: bannerget, getrecommurl: getrecommurl, billboardurl: billboardurl, commodcardurl: commodcardurl, searchurl: searchurl, detailsurl: detailsurl, parameurl: parameurl,
+        commiturl: commiturl, comtag: comtag, comtconent: comtconent, collecturl: collecturl, loginurl: loginurl, pancolurl: pancolurl, shopcarurl: shopcarurl, skuurl: skuurl, goodskuurl: goodskuurl,
+        addcarurl: addcarurl, tokenurl: tokenurl };
+
+    } }]);return urls;}();var _default =
+
+
+urls;exports.default = _default;
+
+/***/ }),
+
+/***/ 16:
+/*!***************************************!*\
+  !*** D:/毕业设计/天猫商城/pattern/animat.css ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+    if(false) { var cssReload; }
+  
+
+/***/ }),
+
+/***/ 17:
+/*!***************************************!*\
+  !*** D:/毕业设计/天猫商城/pattern/styles.css ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+    if(false) { var cssReload; }
+  
+
+/***/ }),
+
+/***/ 18:
+/*!******************************************!*\
+  !*** D:/毕业设计/天猫商城/pages/commonJs/bus.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} // 组件传值
+var _default = new _vue.default();exports.default = _default;
+
+/***/ }),
+
+/***/ 19:
+/*!********************************************!*\
+  !*** D:/毕业设计/天猫商城/pages/commonJs/toast.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;} // 弹窗
+var Toast = /*#__PURE__*/function () {
+  function Toast(title) {var icon = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'success';var duration = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1500;var mask = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;_classCallCheck(this, Toast);
+    this.title = title;
+    this.icon = icon;
+    this.duration = duration;
+    this.mask = mask;
+  }
+  // 消息提示框,自动消失
+  _createClass(Toast, [{ key: "showtoast", value: function showtoast() {
+      wx.showToast({
+        title: this.title,
+        icon: this.icon,
+        duration: this.duration,
+        mask: this.mask });
+
+    }
+    // 消息提示框，手动消失
+  }, { key: "showloading", value: function showloading() {
+      wx.showLoading({
+        title: this.title,
+        mask: this.mask });
+
+    } }]);return Toast;}();var _default =
+
+
+Toast;exports.default = _default;
 
 /***/ }),
 
@@ -9520,79 +9509,58 @@ internalMixin(Vue);
 
 /***/ }),
 
-/***/ 25:
-/*!********************************************!*\
-  !*** D:/毕业设计/天猫商城/pages/commonJs/logic.js ***!
-  \********************************************/
+/***/ 20:
+/*!************************************!*\
+  !*** D:/毕业设计/天猫商城/style/style.css ***!
+  \************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;} // 预览图片
-var Logic = /*#__PURE__*/function () {
-  function Logic(index, imgarr) {_classCallCheck(this, Logic);
-    this.index = index;
-    this.imgarr = imgarr;
-  }_createClass(Logic, [{ key: "previewImg", value: function previewImg()
-    {
-      uni.previewImage({
-        current: this.index,
-        urls: this.imgarr }).
-      then(function (res) {
-        console.log(res);
-      }).catch(function (err) {
-        console.log(err);
-      });
-    } }]);return Logic;}();var _default =
-
-Logic;exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+// extracted by mini-css-extract-plugin
+    if(false) { var cssReload; }
+  
 
 /***/ }),
 
-/***/ 3:
-/*!***********************************!*\
-  !*** (webpack)/buildin/global.js ***!
-  \***********************************/
+/***/ 206:
+/*!***********************************************************!*\
+  !*** D:/毕业设计/天猫商城/node_modules/e-commerce_price/index.js ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-var g;
+var Price = function Price(price) {
+  var num = parseFloat(price.toFixed(10));
+  var s = num.toString();
+  var rs = s.indexOf('.');
 
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
+  // 没有小数点时：
+  if (rs < 0) {
+    rs = s.length;
+    s += '.';
+  }
+  while (s.length <= rs + 2) {
+    s += '0';
+  }
+  return s;
+};
 
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || new Function("return this")();
-} catch (e) {
-	// This works if the window reference is available
-	if (typeof window === "object") g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
+module.exports = Price;
 
 /***/ }),
 
-/***/ 31:
+/***/ 27:
 /*!**********************************************************!*\
   !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
   \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ 32);
+module.exports = __webpack_require__(/*! regenerator-runtime */ 28);
 
 /***/ }),
 
-/***/ 32:
+/***/ 28:
 /*!************************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
   \************************************************************/
@@ -9623,7 +9591,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(/*! ./runtime */ 33);
+module.exports = __webpack_require__(/*! ./runtime */ 29);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -9640,7 +9608,7 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 33:
+/***/ 29:
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -10372,6 +10340,67 @@ if (hadRuntime) {
 
 /***/ }),
 
+/***/ 3:
+/*!***********************************!*\
+  !*** (webpack)/buildin/global.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || new Function("return this")();
+} catch (e) {
+	// This works if the window reference is available
+	if (typeof window === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+
+/***/ 30:
+/*!********************************************!*\
+  !*** D:/毕业设计/天猫商城/pages/commonJs/logic.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;} // 预览图片
+var Logic = /*#__PURE__*/function () {
+  function Logic(index, imgarr) {_classCallCheck(this, Logic);
+    this.index = index;
+    this.imgarr = imgarr;
+  }_createClass(Logic, [{ key: "previewImg", value: function previewImg()
+    {
+      uni.previewImage({
+        current: this.index,
+        urls: this.imgarr }).
+      then(function (res) {
+        console.log(res);
+      }).catch(function (err) {
+        console.log(err);
+      });
+    } }]);return Logic;}();var _default =
+
+Logic;exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
 /***/ 4:
 /*!*******************************!*\
   !*** D:/毕业设计/天猫商城/pages.json ***!
@@ -10383,7 +10412,7 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 93:
+/***/ 95:
 /*!***********************************!*\
   !*** D:/毕业设计/天猫商城/login/Login.js ***!
   \***********************************/
@@ -10391,9 +10420,9 @@ if (hadRuntime) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 31));
-var _request = _interopRequireDefault(__webpack_require__(/*! ../api/request.js */ 13));
-var _api = _interopRequireDefault(__webpack_require__(/*! ../api/api.js */ 11));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}var
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 27));
+var _request = _interopRequireDefault(__webpack_require__(/*! ../api/request.js */ 15));
+var _api = _interopRequireDefault(__webpack_require__(/*! ../api/api.js */ 13));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}var
 
 wxLogin = /*#__PURE__*/function () {
   function wxLogin(user, msg) {_classCallCheck(this, wxLogin);

@@ -42,10 +42,12 @@ const urls = class{
 		let goodskuurl = `${url}querysku`;
 		// 加入购物车
 		let addcarurl = `${url}atcart`;
+		// 校验登录状态
+		let tokenurl = `${url}tokening`
 		return{
 			bannerget,getrecommurl,billboardurl,commodcardurl,searchurl,detailsurl,parameurl,
 				commiturl,comtag,comtconent,collecturl,loginurl,pancolurl,shopcarurl,skuurl,goodskuurl,
-					addcarurl
+					addcarurl,tokenurl
 		}
 	}
 }

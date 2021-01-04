@@ -7,25 +7,28 @@
     "urlCheck": false,
     "es6": true,
     "postcss": true,
-    "minified": true
+    "minified": true,
+    "checkSitMap": false
   },
   "compileType": "miniprogram",
   "libVersion": "",
   "appid": "wx257e4f31f3298b6b",
   "projectname": "天猫商城",
-  "simulatorType": "wechat",
-  "simulatorPluginLibVersion": {},
   "condition": {
     "search": {
+      "current": -1,
       "list": []
     },
     "conversation": {
+      "current": -1,
       "list": []
     },
     "game": {
+      "current": -1,
       "list": []
     },
     "miniprogram": {
+      "current": 0,
       "list": [
         {
           "name": "",

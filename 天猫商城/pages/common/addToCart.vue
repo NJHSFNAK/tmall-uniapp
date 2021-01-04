@@ -55,7 +55,7 @@
 		</view>
 		<!-- 确定 -->
 		<button class="determine coup-anim" v-if="mean === '002'" :disabled="!skumen.ban" @click="detErmine">确定</button>
-		<button class="determine coup-anim" v-if="mean === '003'" :disabled="!skumen.ban" @click="detErmine">确定</button>
+		<button class="determine coup-anim" v-if="mean === '003'" :disabled="!skumen.ban" @click="purchase">确定</button>
 		<!-- <view class="determine coup-anim" >确定</view> -->
 		<!-- 登录弹窗 -->
 		<model ref='modelRef'></model>
@@ -120,7 +120,9 @@
 					price: this.attr.price,
 					title: this.title,
 					many: this.many
-				}
+				};
+				// 校验登录状态
+				let user = await new this.$Request(this.$Urls.m().tokenurl).modeGet();
 				let res = await new this.$Request(this.$Urls.m().addcarurl,data).modepost();
 				if(res.msg.errcode === '401'){
 					// 需要登录
@@ -153,6 +155,29 @@
 					this.many = 1;
 				}else{
 					this.many = this.many - 1;
+				}
+			},
+			// 直接下单
+			async purchase(){
+				let data = [{
+					id: this.id,
+					size: this.sizeValue,
+					color: this.colorValue,
+					image: this.attr.image,
+					price: this.attr.price,
+					title: this.title,
+					many: this.many,
+					total_price: parseFloat((this.attr.price * this.many).toFixed(2)) 
+				}]
+				// 校验登录状态
+				let user = await new this.$Request(this.$Urls.m().tokenurl).modeGet();
+				if(user.msg.errcode){
+					this.$refs.modelRef.show('coll');
+				}else if(user.msg === 'SUCCESS'){
+					let cartdata = JSON.stringify(data);
+					uni.navigateTo({
+						url:'../../payment/payment?cartdata=' + cartdata
+					})
 				}
 			}
 		},

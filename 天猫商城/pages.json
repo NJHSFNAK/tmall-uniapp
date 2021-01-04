@@ -1,12 +1,18 @@
 {
     "pages" : [
         {
-            "path" : "pages/details/details",
-            "style" : {
-                "navigationBarTitleText" : "详情页",
-                "navigationStyle" : "custom"
-            }
+					"path" : "pages/details/details",
+					"style" : {
+							"navigationBarTitleText" : "详情页",
+							"navigationStyle" : "custom"
+					}
         },
+				{
+					"path" : "payment/payment",
+					"style" : {
+						"navigationBarTitleText" : "提交订单"
+					}
+				},
         {
             "path" : "pages/commonEval/Evals",
             "style" : {
