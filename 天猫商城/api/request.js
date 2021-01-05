@@ -43,11 +43,17 @@ const urls = class{
 		// 加入购物车
 		let addcarurl = `${url}atcart`;
 		// 校验登录状态
-		let tokenurl = `${url}tokening`
+		let tokenurl = `${url}tokening`;
+		// 获取收货地址
+		let addressurl = `${url}gainadd`;
+		// 新增收货地址
+		let newaddressurl = `${url}sudeadd`;
+		// 修改收货地址
+		let remaddurl = `${url}modifyadd`;
 		return{
 			bannerget,getrecommurl,billboardurl,commodcardurl,searchurl,detailsurl,parameurl,
 				commiturl,comtag,comtconent,collecturl,loginurl,pancolurl,shopcarurl,skuurl,goodskuurl,
-					addcarurl,tokenurl
+					addcarurl,tokenurl,addressurl,newaddressurl,remaddurl
 		}
 	}
 }

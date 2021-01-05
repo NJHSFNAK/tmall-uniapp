@@ -34,6 +34,10 @@ Vue.component('model',model);
 import toast from './pages/commonJs/toast.js';
 Vue.prototype.$Toast = toast;
 
+// 登录按钮
+import loginpage from './pages/common/login.vue';
+Vue.component('loginpage',loginpage);	
+
 App.mpType = 'app';
 // 全局样式
 import './style/style.css';

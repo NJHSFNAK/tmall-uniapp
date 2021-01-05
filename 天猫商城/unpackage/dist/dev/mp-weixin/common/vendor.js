@@ -3004,6 +3004,66 @@ var index = {
 
 /***/ }),
 
+/***/ 120:
+/*!***********************************!*\
+  !*** D:/毕业设计/天猫商城/login/Login.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 27));
+var _request = _interopRequireDefault(__webpack_require__(/*! ../api/request.js */ 15));
+var _api = _interopRequireDefault(__webpack_require__(/*! ../api/api.js */ 13));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}var
+
+wxLogin = /*#__PURE__*/function () {
+  function wxLogin(user, msg) {_classCallCheck(this, wxLogin);
+    this.user = user;
+    this.msg = msg;
+  }_createClass(wxLogin, [{ key: "login", value: function () {var _login = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var userdata, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (!(
+
+
+                this.msg !== "getUserInfo:ok")) {_context.next = 2;break;}throw (
+
+                  '拒绝登录');case 2:_context.next = 4;return (
+
+                  this.getCode());case 4:userdata = _context.sent;_context.next = 7;return (
+                  new _api.default(_request.default.m().loginurl, userdata).modepost());case 7:res = _context.sent;
+                if (res.msg === "SUCCESS") {
+                  uni.setStorageSync('wxuser', res.data);
+                  wx.showToast({
+                    title: '登录成功',
+                    icon: this.icon,
+                    duration: 1300 });
+
+                }case 9:case "end":return _context.stop();}}}, _callee, this);}));function login() {return _login.apply(this, arguments);}return login;}() }, { key: "getCode", value: function getCode()
+
+
+    {var _this = this;
+      return new Promise(function (resolve, reject) {
+        wx.login({
+          success: function success(res) {
+            var data = {
+              appid: 'wx257e4f31f3298b6b',
+              secret: '6f58020c5a27dbea39e842571b34a53c',
+              nickName: _this.user.nickName,
+              avatarUrl: _this.user.avatarUrl,
+              code: res.code };
+
+            resolve(data);
+          },
+          fail: function fail(err) {
+            reject(err);
+          } });
+
+      });
+    } }]);return wxLogin;}();var _default =
+
+wxLogin;exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
 /***/ 13:
 /*!*******************************!*\
   !*** D:/毕业设计/天猫商城/api/api.js ***!
@@ -3372,10 +3432,16 @@ var urls = /*#__PURE__*/function () {
       var addcarurl = "".concat(url, "atcart");
       // 校验登录状态
       var tokenurl = "".concat(url, "tokening");
+      // 获取收货地址
+      var addressurl = "".concat(url, "gainadd");
+      // 新增收货地址
+      var newaddressurl = "".concat(url, "sudeadd");
+      // 修改收货地址
+      var remaddurl = "".concat(url, "modifyadd");
       return {
         bannerget: bannerget, getrecommurl: getrecommurl, billboardurl: billboardurl, commodcardurl: commodcardurl, searchurl: searchurl, detailsurl: detailsurl, parameurl: parameurl,
         commiturl: commiturl, comtag: comtag, comtconent: comtconent, collecturl: collecturl, loginurl: loginurl, pancolurl: pancolurl, shopcarurl: shopcarurl, skuurl: skuurl, goodskuurl: goodskuurl,
-        addcarurl: addcarurl, tokenurl: tokenurl };
+        addcarurl: addcarurl, tokenurl: tokenurl, addressurl: addressurl, newaddressurl: newaddressurl, remaddurl: remaddurl };
 
     } }]);return urls;}();var _default =
 
@@ -9522,33 +9588,6 @@ internalMixin(Vue);
 
 /***/ }),
 
-/***/ 206:
-/*!***********************************************************!*\
-  !*** D:/毕业设计/天猫商城/node_modules/e-commerce_price/index.js ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var Price = function Price(price) {
-  var num = parseFloat(price.toFixed(10));
-  var s = num.toString();
-  var rs = s.indexOf('.');
-
-  // 没有小数点时：
-  if (rs < 0) {
-    rs = s.length;
-    s += '.';
-  }
-  while (s.length <= rs + 2) {
-    s += '0';
-  }
-  return s;
-};
-
-module.exports = Price;
-
-/***/ }),
-
 /***/ 27:
 /*!**********************************************************!*\
   !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
@@ -10371,7 +10410,18 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 30:
+/***/ 4:
+/*!*******************************!*\
+  !*** D:/毕业设计/天猫商城/pages.json ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ 46:
 /*!********************************************!*\
   !*** D:/毕业设计/天猫商城/pages/commonJs/logic.js ***!
   \********************************************/
@@ -10401,74 +10451,30 @@ Logic;exports.default = _default;
 
 /***/ }),
 
-/***/ 4:
-/*!*******************************!*\
-  !*** D:/毕业设计/天猫商城/pages.json ***!
-  \*******************************/
+/***/ 62:
+/*!***********************************************************!*\
+  !*** D:/毕业设计/天猫商城/node_modules/e-commerce_price/index.js ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+var Price = function Price(price) {
+  var num = parseFloat(price.toFixed(10));
+  var s = num.toString();
+  var rs = s.indexOf('.');
 
+  // 没有小数点时：
+  if (rs < 0) {
+    rs = s.length;
+    s += '.';
+  }
+  while (s.length <= rs + 2) {
+    s += '0';
+  }
+  return s;
+};
 
-/***/ }),
-
-/***/ 95:
-/*!***********************************!*\
-  !*** D:/毕业设计/天猫商城/login/Login.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 27));
-var _request = _interopRequireDefault(__webpack_require__(/*! ../api/request.js */ 15));
-var _api = _interopRequireDefault(__webpack_require__(/*! ../api/api.js */ 13));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}var
-
-wxLogin = /*#__PURE__*/function () {
-  function wxLogin(user, msg) {_classCallCheck(this, wxLogin);
-    this.user = user;
-    this.msg = msg;
-  }_createClass(wxLogin, [{ key: "login", value: function () {var _login = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var userdata, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (!(
-
-
-                this.msg !== "getUserInfo:ok")) {_context.next = 2;break;}throw (
-
-                  '拒绝登录');case 2:_context.next = 4;return (
-
-                  this.getCode());case 4:userdata = _context.sent;_context.next = 7;return (
-                  new _api.default(_request.default.m().loginurl, userdata).modepost());case 7:res = _context.sent;
-                if (res.msg === "SUCCESS") {
-                  uni.setStorageSync('wxuser', res.data);
-                  wx.showToast({
-                    title: '登录成功',
-                    icon: this.icon,
-                    duration: 1300 });
-
-                }case 9:case "end":return _context.stop();}}}, _callee, this);}));function login() {return _login.apply(this, arguments);}return login;}() }, { key: "getCode", value: function getCode()
-
-
-    {var _this = this;
-      return new Promise(function (resolve, reject) {
-        wx.login({
-          success: function success(res) {
-            var data = {
-              appid: 'wx257e4f31f3298b6b',
-              secret: '6f58020c5a27dbea39e842571b34a53c',
-              nickName: _this.user.nickName,
-              avatarUrl: _this.user.avatarUrl,
-              code: res.code };
-
-            resolve(data);
-          },
-          fail: function fail(err) {
-            reject(err);
-          } });
-
-      });
-    } }]);return wxLogin;}();var _default =
-
-wxLogin;exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+module.exports = Price;
 
 /***/ })
 

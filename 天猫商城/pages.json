@@ -1,5 +1,17 @@
 {
     "pages" : [
+			{
+				"path" : "pages/address/Address",
+				"style" : {
+					"navigationBarTitleText" : "收货地址"
+				}
+			},
+			{
+				"path" : "pages/address/newAddress",
+				"style" : {
+					"navigationBarTitleText" : "新增收货地址" 
+				}
+			},
         {
 					"path" : "pages/details/details",
 					"style" : {
@@ -42,6 +54,7 @@
                 "navigationBarTextStyle" : "white"
             }
         },
+				
         {
             "path" : "pages/shopping/shopping",
             "style" : {

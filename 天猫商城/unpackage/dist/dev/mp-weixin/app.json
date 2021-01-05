@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/address/Address",
+    "pages/address/newAddress",
     "pages/details/details",
     "payment/payment",
     "pages/commonEval/Evals",
@@ -51,6 +53,8 @@
   },
   "usingComponents": {
     "loader-on": "/pages/common/loading",
-    "model": "/pages/common/model"
-  }
+    "model": "/pages/common/model",
+    "loginpage": "/pages/common/login"
+  },
+  "sitemapLocation": "sitemap17.json"
 }
