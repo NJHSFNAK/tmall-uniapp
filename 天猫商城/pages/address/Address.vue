@@ -3,7 +3,7 @@
 	<view>
 		<block v-for="(item,index) in arrdata" :key='index' v-if='!addshow'>
 			<view class="my-address-view">
-				<view class="my-address-name">
+				<view class="my-address-name" @click="getAdd(item)">
 					<text>{{item.address}}</text>
 					<view class="my-address-adding">
 						<text>{{item.name}}</text>
@@ -68,6 +68,14 @@
 				uni.navigateTo({
 					url:'./newAddress?data='+ str
 				})
+			},
+			// 选中某个收货地址携带参数返回上一级
+			getAdd(item){
+				// this.$store.commit('address',item);
+				this.$bus.$emit('address',item);
+				uni.navigateBack({
+					delta: 1
+				})
 			}
 		},
 		onShow() {
@@ -76,7 +84,6 @@
 		},
 		mounted() {
 			this.$bus.$on('mycart',(res)=>{
-				console.log(res)
 				this.getadd();
 			})
 		}

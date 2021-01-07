@@ -130,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 27));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};} //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 27));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};} //
 //
 //
 //
@@ -206,11 +206,53 @@ var _default =
                   new _this.$Request(_this.$Urls.m().newaddressurl, data).modepost());case 4:res = _context.sent;
                 if (res.msg === 'SUCCESS') {
                   new _this.$Toast('提交成功').showtoast();
+                  uni.navigateBack({
+                    delta: 1 });
+
                 } else {
                   new _this.$Toast(res.msg, 'none').showtoast();
                 }_context.next = 10;break;case 8:_context.prev = 8;_context.t0 = _context["catch"](0);case 10:case "end":return _context.stop();}}}, _callee, null, [[0, 8]]);}))();
 
 
+
+    },
+    // 更改收货地址
+    removeAddress: function removeAddress() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var data, res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
+                new _this2.$Toast('正在修改').showloading();_context2.prev = 1;
+
+                data = { id: _this2.id, city: _this2.city, address: _this2.address, name: _this2.name, mobile: _this2.mobile };_context2.next = 5;return (
+                  new _this2.$Request(_this2.$Urls.m().remaddurl, data).modepost());case 5:res = _context2.sent;
+                console.log(res);
+                if (res.msg === "SUCCESS") {
+                  new _this2.$Toast('修改成功').showtoast();
+                  uni.navigateBack({
+                    delta: 1 });
+
+                } else {
+                  new _this2.$Toast(res.msg, 'none').showtoast();
+                }_context2.next = 13;break;case 10:_context2.prev = 10;_context2.t0 = _context2["catch"](1);
+
+                //TODO handle the exception
+                console.log();case 13:case "end":return _context2.stop();}}}, _callee2, null, [[1, 10]]);}))();
+
+    },
+    // 删除收货地址
+    deleteAddress: function deleteAddress() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var res;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
+                new _this3.$Toast('正在删除').showloading();_context3.prev = 1;_context3.next = 4;return (
+
+                  new _this3.$Request(_this3.$Urls.m().deleteaddurl + '?id=' + _this3.id).modeGet());case 4:res = _context3.sent;
+                console.log(res);
+                if (res.msg === "SUCCESS") {
+                  new _this3.$Toast('删除成功').showtoast();
+                  uni.navigateBack({
+                    delta: 1 });
+
+                } else {
+                  new _this3.$Toast(res.msg, 'none').showtoast();
+                }_context3.next = 12;break;case 9:_context3.prev = 9;_context3.t0 = _context3["catch"](1);
+
+                //TODO handle the exception
+                console.log();case 12:case "end":return _context3.stop();}}}, _callee3, null, [[1, 9]]);}))();
 
     } },
 
@@ -229,6 +271,7 @@ var _default =
       this.nameadd = false;
     }
   } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

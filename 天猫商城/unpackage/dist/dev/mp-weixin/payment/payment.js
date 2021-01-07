@@ -191,7 +191,9 @@ var Price = __webpack_require__(/*! e-commerce_price */ 62);var _default =
       // 商品页面的立即购买
       comminfo: [],
       // 商品总价
-      Totalprice: 0 };
+      Totalprice: 0,
+      nameadd: Boolean,
+      addressdata: {} };
 
   },
   onLoad: function onLoad(e) {
@@ -203,10 +205,28 @@ var Price = __webpack_require__(/*! e-commerce_price */ 62);var _default =
       }} catch (err) {_iterator.e(err);} finally {_iterator.f();}
     this.Totalprice = Price(numdata);
   },
-  computed: {
-    // Totalprice() {
-    // 	return this.data 
-    // }
+  methods: {
+    address: function address() {
+      wx.navigateTo({
+        url: '../pages/address/Address' });
+
+    } },
+
+  watch: {
+    // 监听收货地址
+    '$store.state.useradd': function $storeStateUseradd(newValue, oldValue) {
+      this.addressdata = newValue.add;
+    } },
+
+  onShow: function onShow() {var _this = this;
+    this.$bus.$on('address', function (res) {
+      _this.addressdata = res;
+    });
+    if (JSON.stringify(this.addressdata) === '{}') {
+      this.nameadd = false;
+    } else {
+      this.nameadd = true;
+    }
   } };exports.default = _default;
 
 /***/ }),

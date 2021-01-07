@@ -50,10 +50,12 @@ const urls = class{
 		let newaddressurl = `${url}sudeadd`;
 		// 修改收货地址
 		let remaddurl = `${url}modifyadd`;
+		// 删除收货地址
+		let deleteaddurl = `${url}deleadd`;
 		return{
 			bannerget,getrecommurl,billboardurl,commodcardurl,searchurl,detailsurl,parameurl,
 				commiturl,comtag,comtconent,collecturl,loginurl,pancolurl,shopcarurl,skuurl,goodskuurl,
-					addcarurl,tokenurl,addressurl,newaddressurl,remaddurl
+					addcarurl,tokenurl,addressurl,newaddressurl,remaddurl,deleteaddurl
 		}
 	}
 }

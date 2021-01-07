@@ -1,6 +1,19 @@
 {
     "pages" : [
 			{
+				"path" : "pages/details/details",
+				"style" : {
+						"navigationBarTitleText" : "详情页",
+						"navigationStyle" : "custom"
+				}
+			},
+			{
+				"path" : "payment/payment",
+				"style" : {
+					"navigationBarTitleText" : "提交订单"
+				}
+			},
+			{
 				"path" : "pages/address/Address",
 				"style" : {
 					"navigationBarTitleText" : "收货地址"
@@ -12,19 +25,8 @@
 					"navigationBarTitleText" : "新增收货地址" 
 				}
 			},
-        {
-					"path" : "pages/details/details",
-					"style" : {
-							"navigationBarTitleText" : "详情页",
-							"navigationStyle" : "custom"
-					}
-        },
-				{
-					"path" : "payment/payment",
-					"style" : {
-						"navigationBarTitleText" : "提交订单"
-					}
-				},
+        
+				
         {
             "path" : "pages/commonEval/Evals",
             "style" : {

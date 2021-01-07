@@ -40,9 +40,9 @@
 		<!-- 保存地址 -->
 		<view class="conServe adcolor" @click="saveAddress" v-if="!nameadd">保存地址</view>
 		<!-- 修改地址 -->
-		<view class="conServe adcolor" v-if="nameadd">修改地址</view>
+		<view class="conServe adcolor" @click="removeAddress" v-if="nameadd">修改地址</view>
 		<!-- 删除地址 -->
-		<view class="conServe decolor" v-if="nameadd">删除</view>
+		<view class="conServe decolor" @click="deleteAddress" v-if="nameadd">删除</view>
 	</view>
 </template>
 
@@ -74,11 +74,53 @@
 					let res = await new this.$Request(this.$Urls.m().newaddressurl, data).modepost();
 					if(res.msg === 'SUCCESS'){
 						new this.$Toast('提交成功').showtoast();
+						uni.navigateBack({
+							delta: 1
+						})
 					}else{
 						new this.$Toast(res.msg,'none').showtoast();
 					}
 				}catch(e){
 					//TODO handle the exception
+				}
+			},
+			// 更改收货地址
+			async removeAddress(){
+				new this.$Toast('正在修改').showloading();
+				try{
+					let data = {id:this.id,city: this.city, address: this.address, name: this.name, mobile: this.mobile};
+					let res = await new this.$Request(this.$Urls.m().remaddurl, data).modepost();
+					console.log(res);
+					if(res.msg === "SUCCESS"){
+						new this.$Toast('修改成功').showtoast();
+						uni.navigateBack({
+							delta: 1
+						});
+					}else{
+						new this.$Toast(res.msg,'none').showtoast();
+					}
+				}catch(e){
+					//TODO handle the exception
+					console.log()
+				}
+			},
+			// 删除收货地址
+			async deleteAddress(){
+				new this.$Toast('正在删除').showloading();
+				try{
+					let res = await new this.$Request(this.$Urls.m().deleteaddurl+'?id='+this.id).modeGet();
+					console.log(res);
+					if(res.msg === "SUCCESS"){
+						new this.$Toast('删除成功').showtoast();
+						uni.navigateBack({
+							delta: 1
+						});
+					}else{
+						new this.$Toast(res.msg,'none').showtoast();
+					}
+				}catch(e){
+					//TODO handle the exception
+					console.log()
 				}
 			}
 		},

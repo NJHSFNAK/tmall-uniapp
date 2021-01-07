@@ -2,17 +2,17 @@
 	<view>
 		<view class="payment-view">
 			<!-- 收货地址 -->
-			<view class="payment-name">
+			<view class="payment-name" @click="address">
 				<view class="payment-left-img">
 					<image src="/static/loading/address-shouhuo.svg" mode="widthFix"></image>
 				</view>
 				<!-- 收货地址 -->
 				<view class="payment-add" v-if="nameadd">
-					<text>{{}}</text>
-					<text>{{}}</text>
-					<text></text>
+					<text>{{addressdata.name}}</text>
+					<text>{{addressdata.mobile}}</text>
+					<text>{{addressdata.address}}</text>
 				</view>
-				<view class="payment-add" >请选择收货地址</view>
+				<view class="payment-add" v-if="!nameadd">请选择收货地址</view>
 				<view class="payment-right-img">
 					<image src="/static/loading/shouhuo-jiantou.svg" mode="widthFix"></image>
 				</view>
@@ -59,7 +59,9 @@
 				// 商品页面的立即购买
 				comminfo: [],
 				// 商品总价
-				Totalprice: 0
+				Totalprice: 0,
+				nameadd: Boolean,
+				addressdata:{}
 			}
 		},
 		onLoad(e) {
@@ -71,11 +73,29 @@
 			}
 			this.Totalprice =Price(numdata);
 		},
-		computed: {
-			// Totalprice() {
-			// 	return this.data 
-			// }
+		methods: {
+			address() {
+				wx.navigateTo({
+					url:'../pages/address/Address'
+				})
+			},
 		},
+		watch: {
+			// 监听收货地址
+			'$store.state.useradd'(newValue, oldValue) {
+				this.addressdata = newValue.add;
+			},
+		},
+		onShow() {
+			this.$bus.$on('address',(res)=>{
+				this.addressdata = res;
+			});
+			if(JSON.stringify(this.addressdata) === '{}'){
+				this.nameadd = false;
+			}else{
+				this.nameadd = true;
+			}
+		}
 	}
 </script>
 

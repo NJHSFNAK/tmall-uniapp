@@ -200,6 +200,14 @@ var _default =
       uni.navigateTo({
         url: './newAddress?data=' + str });
 
+    },
+    // 选中某个收货地址携带参数返回上一级
+    getAdd: function getAdd(item) {
+      // this.$store.commit('address',item);
+      this.$bus.$emit('address', item);
+      uni.navigateBack({
+        delta: 1 });
+
     } },
 
   onShow: function onShow() {
@@ -208,7 +216,6 @@ var _default =
   },
   mounted: function mounted() {var _this2 = this;
     this.$bus.$on('mycart', function (res) {
-      console.log(res);
       _this2.getadd();
     });
   } };exports.default = _default;

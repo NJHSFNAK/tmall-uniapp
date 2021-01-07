@@ -1,9 +1,9 @@
 {
   "pages": [
-    "pages/address/Address",
-    "pages/address/newAddress",
     "pages/details/details",
     "payment/payment",
+    "pages/address/Address",
+    "pages/address/newAddress",
     "pages/commonEval/Evals",
     "pages/search/Search",
     "pages/index/index",
@@ -55,6 +55,5 @@
     "loader-on": "/pages/common/loading",
     "model": "/pages/common/model",
     "loginpage": "/pages/common/login"
-  },
-  "sitemapLocation": "sitemap17.json"
+  }
 }
