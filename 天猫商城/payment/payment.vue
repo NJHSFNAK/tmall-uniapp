@@ -61,7 +61,9 @@
 				// 商品总价
 				Totalprice: 0,
 				nameadd: Boolean,
-				addressdata:{}
+				addressdata:{},
+				// 存储购物车数组
+				idcard:[]
 			}
 		},
 		onLoad(e) {
@@ -79,6 +81,42 @@
 					url:'../pages/address/Address'
 				})
 			},
+			// 立即支付
+			async placeOrder(){
+				let {city,address,name,mobile} = this.addressdata;
+				// 商品数据
+				let codata = this.comminfo.map((item)=>{
+					let data = {
+						id: item.id,
+						image: item.image,
+						title: item.title,
+						size: item.size,
+						color: item.color,
+						price: item.price,
+						many: item.many
+					}
+					return data;
+				});
+				let dataobj = {
+					consignee: this.addressdata,
+					commodity: codata,
+					total_price: this.Totalprice,
+					idcard: this.idcard
+				};
+				// 请求统一下单接口
+				try{
+					let res = await new this.$Request(this.$Urls.m().wxpayurl,dataobj).modepost();
+					if(res.msg !== 'SUCCESS'){
+						throw res.msg
+					}else{
+						
+					}
+				}catch(e){
+					new this.$Toast(e,'none').showtoast();
+					throw e
+				}
+				console.log(res);
+			}
 		},
 		watch: {
 			// 监听收货地址

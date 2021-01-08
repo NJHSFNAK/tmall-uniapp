@@ -55,5 +55,6 @@
     "loader-on": "/pages/common/loading",
     "model": "/pages/common/model",
     "loginpage": "/pages/common/login"
-  }
+  },
+  "sitemapLocation": "sitemap51.json"
 }

@@ -52,10 +52,12 @@ const urls = class{
 		let remaddurl = `${url}modifyadd`;
 		// 删除收货地址
 		let deleteaddurl = `${url}deleadd`;
+		// 微信支付：统一下单
+		let wxpayurl = `${url}placeorder`;
 		return{
 			bannerget,getrecommurl,billboardurl,commodcardurl,searchurl,detailsurl,parameurl,
 				commiturl,comtag,comtconent,collecturl,loginurl,pancolurl,shopcarurl,skuurl,goodskuurl,
-					addcarurl,tokenurl,addressurl,newaddressurl,remaddurl,deleteaddurl
+					addcarurl,tokenurl,addressurl,newaddressurl,remaddurl,deleteaddurl,wxpayurl
 		}
 	}
 }
