@@ -8,7 +8,7 @@
 		<view class="list-view">
 			<block v-for="(item,index) in billboarddata" :key='index'>
 			<view class="menb">
-				<image :src="item.image"  mode="aspectFill"/>
+				<image :src="item.image"  mode="aspectFill" @click="drop(item._id)"/>
 				<text>{{item.title}}</text>
 				<text>{{item.want}}人想要</text>
 			</view>
@@ -29,6 +29,13 @@
 				type: Array,
 				default: []
 			},
+		},
+		methods: {
+			drop(id) {
+				uni.navigateTo({
+					url:'../details/details?id='+ id
+				})
+			}
 		},
 	}
 </script>

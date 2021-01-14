@@ -114,7 +114,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -153,11 +153,18 @@ var _default =
     // 轮播图滑动触发的事件
     swiperFun: function swiperFun(e) {
       this.num = e.detail.current;
+    },
+    // 跳转到详情页
+    drop: function drop(id) {
+      uni.navigateTo({
+        url: '../details/details?id=' + id });
+
     } },
 
   created: function created() {
 
   } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

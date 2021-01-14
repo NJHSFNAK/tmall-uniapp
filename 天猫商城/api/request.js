@@ -53,11 +53,15 @@ const urls = class{
 		// 删除收货地址
 		let deleteaddurl = `${url}deleadd`;
 		// 微信支付：统一下单
-		let wxpayurl = `${url}placeorder`;
+		// let wxpayurl = `${url}placeorder`;
+		// 查询订单是否支付成功
+		let queryorderurl = `${url}queryorder`;
+		// 虚拟支付接口
+		let fictpayurl = `${url}fictpay`;
 		return{
 			bannerget,getrecommurl,billboardurl,commodcardurl,searchurl,detailsurl,parameurl,
 				commiturl,comtag,comtconent,collecturl,loginurl,pancolurl,shopcarurl,skuurl,goodskuurl,
-					addcarurl,tokenurl,addressurl,newaddressurl,remaddurl,deleteaddurl,wxpayurl
+					addcarurl,tokenurl,addressurl,newaddressurl,remaddurl,deleteaddurl,fictpayurl
 		}
 	}
 }

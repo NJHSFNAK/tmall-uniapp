@@ -51,7 +51,6 @@
 					}else if(res.data.length === 0){
 						this.addshow = true;
 					}else{
-						console.log(res.data)
 						this.arrdata = res.data;
 						this.addshow = false;
 					}

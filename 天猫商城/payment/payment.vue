@@ -63,7 +63,11 @@
 				nameadd: Boolean,
 				addressdata:{},
 				// 存储购物车数组
-				idcard:[]
+				idcard:[],
+				// 订单号信息
+				outno:'',
+				// 订单号
+				ide:''
 			}
 		},
 		onLoad(e) {
@@ -83,6 +87,7 @@
 			},
 			// 立即支付
 			async placeOrder(){
+				new this.$Toast('正在下单').showloading();
 				let {city,address,name,mobile} = this.addressdata;
 				// 商品数据
 				let codata = this.comminfo.map((item)=>{
@@ -104,18 +109,64 @@
 					idcard: this.idcard
 				};
 				// 请求统一下单接口
+				// 虚拟支付接口
 				try{
-					let res = await new this.$Request(this.$Urls.m().wxpayurl,dataobj).modepost();
+					var res = await new this.$Request(this.$Urls.m().fictpayurl,dataobj).modepost();
+					console.log(res);
 					if(res.msg !== 'SUCCESS'){
 						throw res.msg
 					}else{
-						
+						// 存储订单号和信息
+						this.outno = res.data.out_trade_no;
+						this.ide = res.data.id;
 					}
 				}catch(e){
 					new this.$Toast(e,'none').showtoast();
 					throw e
-				}
-				console.log(res);
+				}; 
+				// 调用支付
+				try{
+					console.log(res);
+					// 虚拟支付
+					if(res.msg === 'SUCCESS'){
+						new this.$Toast('支付成功','none').showtoast();
+					}else{
+						throw '支付失败'
+					}
+					// 实体户支付
+					// let {nonceStr, paySign, signType, timeStamp} = res.data;
+					// await this.wxPay({nonceStr, paySign, signType, timeStamp, package :res.data.package});
+				}catch(e){
+					// new this.$Toast('支付失败','none').showtoast();
+					throw e;
+				};
+				// 查询订单是否支付成功
+				// try{
+				// 	let querydata = await new this.$Request(this.$Urls.m().queryorderurl, 
+				// 	{
+				// 		outno: this.outno, id: this.ide
+				// 	}).modepost();
+				// 	if(querydata.msg === 'SUCCESS'){
+				// 		new this.$Toast('支付成功').showtoast();
+				// 	}else{
+				// 		throw '支付失败'
+				// 	}
+				// }catch(e){
+				// 	new this.$Toast(e,'none').showtoast();
+				// }
+			},
+			wxPay(payment){
+				return new Promise((resolve,reject)=>{
+					wx.requestPayment({
+						...payment,
+						success: (res) => {
+							resolve(res);
+						},
+						fail:(err)=>{
+							reject(err)
+						}
+					})
+				})
 			}
 		},
 		watch: {

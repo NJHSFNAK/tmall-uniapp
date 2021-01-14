@@ -3448,11 +3448,15 @@ var urls = /*#__PURE__*/function () {
       // 删除收货地址
       var deleteaddurl = "".concat(url, "deleadd");
       // 微信支付：统一下单
-      var wxpayurl = "".concat(url, "placeorder");
+      // let wxpayurl = `${url}placeorder`;
+      // 查询订单是否支付成功
+      var queryorderurl = "".concat(url, "queryorder");
+      // 虚拟支付接口
+      var fictpayurl = "".concat(url, "fictpay");
       return {
         bannerget: bannerget, getrecommurl: getrecommurl, billboardurl: billboardurl, commodcardurl: commodcardurl, searchurl: searchurl, detailsurl: detailsurl, parameurl: parameurl,
         commiturl: commiturl, comtag: comtag, comtconent: comtconent, collecturl: collecturl, loginurl: loginurl, pancolurl: pancolurl, shopcarurl: shopcarurl, skuurl: skuurl, goodskuurl: goodskuurl,
-        addcarurl: addcarurl, tokenurl: tokenurl, addressurl: addressurl, newaddressurl: newaddressurl, remaddurl: remaddurl, deleteaddurl: deleteaddurl, wxpayurl: wxpayurl };
+        addcarurl: addcarurl, tokenurl: tokenurl, addressurl: addressurl, newaddressurl: newaddressurl, remaddurl: remaddurl, deleteaddurl: deleteaddurl, fictpayurl: fictpayurl };
 
     } }]);return urls;}();var _default =
 

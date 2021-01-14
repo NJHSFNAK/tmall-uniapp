@@ -5,7 +5,7 @@
 				:duration="1000" @change='swiperFun'>
 				<block v-for="(item,index) in bannerdata" :key='index'>
 					<swiper-item>
-						<view class="swiper-item">
+						<view class="swiper-item" @click="drop(item._id)">
 							<image :src="item.image" mode="aspectFill"></image>
 						</view>
 					</swiper-item>
@@ -37,6 +37,12 @@
 			// 轮播图滑动触发的事件
 			swiperFun(e){
 				this.num = e.detail.current;
+			},
+			// 跳转到详情页
+			drop(id){
+				uni.navigateTo({
+					url:'../details/details?id='+ id
+				})
 			}
 		},
 		created() {

@@ -10,7 +10,7 @@
 				<view class="pur-img">
 					<block v-for="(item,index) in recomdata[0].image" :key='index'>
 					<view>
-						<image :src="item.img" mode="widthFix"></image>
+						<image :src="item.img" mode="widthFix" @click="drop(item._id)"></image>
 					</view>
 					</block>
 				</view>
@@ -26,7 +26,7 @@
 					<view class="pur-right-img">
 						<block v-for="(item,index) in recomdata[1].image" :key='index'>
 						<view>
-							<image :src="item.img" mode="widthFix"></image>
+							<image :src="item.img" mode="widthFix" @click="drop(item._id)"></image>
 						</view>
 						</block>
 					</view>
@@ -40,7 +40,7 @@
 					<view class="pur-right-img">
 						<block v-for="(item,index) in recomdata[2].image" :key='index'>
 						<view>
-							<image :src="item.img" mode="widthFix" ></image>
+							<image :src="item.img" mode="widthFix" @click="drop(item._id)"></image>
 						</view>
 						</block>
 					</view>
@@ -62,6 +62,13 @@
 				type: Array,
 				default: []
 			},
+		},
+		methods: {
+			drop(id) {
+				uni.navigateTo({
+					url: '../details/details?id='+ id
+				})
+			}
 		},
 	}
 </script>

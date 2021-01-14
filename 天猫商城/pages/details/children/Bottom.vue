@@ -48,7 +48,7 @@
 				let data = {num,id}
 				try{
 					let enshrine = await new this.$Request(this.$Urls.m().collecturl,data).modepost();
-					console.log(enshrine);
+					// console.log(enshrine);
 					let {errcode} = enshrine.msg;
 					if(errcode == '401'){
 						// 要去登录
@@ -89,7 +89,7 @@
 				this.collects = collects;
 			},
 			shopcar(newValue, oldValue){
-				console.log(newValue)
+				// console.log(newValue)
 				if(newValue.msg.errcode){
 					this.cartnum = 0;
 				}else if(newValue.msg === 'SUCCESS'){

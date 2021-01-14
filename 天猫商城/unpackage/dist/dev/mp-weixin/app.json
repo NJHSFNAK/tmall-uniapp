@@ -1,12 +1,13 @@
 {
   "pages": [
+    "pages/personal/personal",
+    "pages/index/index",
     "pages/details/details",
     "payment/payment",
     "pages/address/Address",
     "pages/address/newAddress",
     "pages/commonEval/Evals",
     "pages/search/Search",
-    "pages/index/index",
     "pages/sort/sort",
     "pages/shopping/shopping",
     "pages/profile/profile",
@@ -55,6 +56,5 @@
     "loader-on": "/pages/common/loading",
     "model": "/pages/common/model",
     "loginpage": "/pages/common/login"
-  },
-  "sitemapLocation": "sitemap51.json"
+  }
 }

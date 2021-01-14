@@ -130,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 27));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function _createForOfIteratorHelper(o, allowArrayLike) {var it;if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {if (it) o = it;var i = 0;var F = function F() {};return { s: F, n: function n() {if (i >= o.length) return { done: true };return { done: false, value: o[i++] };}, e: function e(_e) {throw _e;}, f: F };}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}var normalCompletion = true,didErr = false,err;return { s: function s() {it = o[Symbol.iterator]();}, n: function n() {var step = it.next();normalCompletion = step.done;return step;}, e: function e(_e2) {didErr = true;err = _e2;}, f: function f() {try {if (!normalCompletion && it.return != null) it.return();} finally {if (didErr) throw err;}} };}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(o);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;} //
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 27));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function _createForOfIteratorHelper(o, allowArrayLike) {var it;if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {if (it) o = it;var i = 0;var F = function F() {};return { s: F, n: function n() {if (i >= o.length) return { done: true };return { done: false, value: o[i++] };}, e: function e(_e) {throw _e;}, f: F };}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}var normalCompletion = true,didErr = false,err;return { s: function s() {it = o[Symbol.iterator]();}, n: function n() {var step = it.next();normalCompletion = step.done;return step;}, e: function e(_e2) {didErr = true;err = _e2;}, f: function f() {try {if (!normalCompletion && it.return != null) it.return();} finally {if (didErr) throw err;}} };}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(o);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;} //
 //
 //
 //
@@ -195,7 +195,11 @@ var Price = __webpack_require__(/*! e-commerce_price */ 46);var _default =
       nameadd: Boolean,
       addressdata: {},
       // 存储购物车数组
-      idcard: [] };
+      idcard: [],
+      // 订单号信息
+      outno: '',
+      // 订单号
+      ide: '' };
 
   },
   onLoad: function onLoad(e) {
@@ -214,7 +218,8 @@ var Price = __webpack_require__(/*! e-commerce_price */ 46);var _default =
 
     },
     // 立即支付
-    placeOrder: function placeOrder() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _this$addressdata, city, address, name, mobile, codata, dataobj, _res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_this$addressdata =
+    placeOrder: function placeOrder() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _this$addressdata, city, address, name, mobile, codata, dataobj, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+                new _this.$Toast('正在下单').showloading();_this$addressdata =
                 _this.addressdata, city = _this$addressdata.city, address = _this$addressdata.address, name = _this$addressdata.name, mobile = _this$addressdata.mobile;
                 // 商品数据
                 codata = _this.comminfo.map(function (item) {
@@ -236,18 +241,64 @@ var Price = __webpack_require__(/*! e-commerce_price */ 46);var _default =
                   idcard: _this.idcard };
 
                 // 请求统一下单接口
-                _context.prev = 3;_context.next = 6;return (
-                  new _this.$Request(_this.$Urls.m().wxpayurl, dataobj).modepost());case 6:_res = _context.sent;if (!(
-                _res.msg !== 'SUCCESS')) {_context.next = 11;break;}throw (
-                  _res.msg);case 11:_context.next = 17;break;case 13:_context.prev = 13;_context.t0 = _context["catch"](3);
+                // 虚拟支付接口
+                _context.prev = 4;_context.next = 7;return (
+                  new _this.$Request(_this.$Urls.m().fictpayurl, dataobj).modepost());case 7:res = _context.sent;
+                console.log(res);if (!(
+                res.msg !== 'SUCCESS')) {_context.next = 13;break;}throw (
+                  res.msg);case 13:
+
+                // 存储订单号和信息
+                _this.outno = res.data.out_trade_no;
+                _this.ide = res.data.id;case 15:_context.next = 21;break;case 17:_context.prev = 17;_context.t0 = _context["catch"](4);
+
+
+                new _this.$Toast(_context.t0, 'none').showtoast();throw _context.t0;case 21:
+
+                ;
+                // 调用支付
+                _context.prev = 22;
+                console.log(res);
+                // 虚拟支付
+                if (!(res.msg === 'SUCCESS')) {_context.next = 28;break;}
+                new _this.$Toast('支付成功', 'none').showtoast();_context.next = 29;break;case 28:throw (
+
+                  '支付失败');case 29:_context.next = 34;break;case 31:_context.prev = 31;_context.t1 = _context["catch"](22);throw _context.t1;case 34:
 
 
 
 
-                new _this.$Toast(_context.t0, 'none').showtoast();throw _context.t0;case 17:
 
 
-                console.log(res);case 18:case "end":return _context.stop();}}}, _callee, null, [[3, 13]]);}))();
+
+                ;
+                // 查询订单是否支付成功
+                // try{
+                // 	let querydata = await new this.$Request(this.$Urls.m().queryorderurl, 
+                // 	{
+                // 		outno: this.outno, id: this.ide
+                // 	}).modepost();
+                // 	if(querydata.msg === 'SUCCESS'){
+                // 		new this.$Toast('支付成功').showtoast();
+                // 	}else{
+                // 		throw '支付失败'
+                // 	}
+                // }catch(e){
+                // 	new this.$Toast(e,'none').showtoast();
+                // }
+              case 35:case "end":return _context.stop();}}}, _callee, null, [[4, 17], [22, 31]]);}))();},
+    wxPay: function wxPay(payment) {
+      return new Promise(function (resolve, reject) {
+        wx.requestPayment(_objectSpread(_objectSpread({},
+        payment), {}, {
+          success: function success(res) {
+            resolve(res);
+          },
+          fail: function fail(err) {
+            reject(err);
+          } }));
+
+      });
     } },
 
   watch: {

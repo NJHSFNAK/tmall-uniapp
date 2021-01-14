@@ -180,14 +180,14 @@ var _default =
                 data = { num: num, id: id };_context.prev = 1;_context.next = 4;return (
 
                   new _this.$Request(_this.$Urls.m().collecturl, data).modepost());case 4:enshrine = _context.sent;
-                console.log(enshrine);
+                // console.log(enshrine);
                 errcode = enshrine.msg.errcode;
                 if (errcode == '401') {
                   // 要去登录
                   _this.$refs.modelRef.show('coll');
                 } else if (errcode == '200') {
                   _this.collects = enshrine.msg.collects;
-                }_context.next = 12;break;case 10:_context.prev = 10;_context.t0 = _context["catch"](1);case 12:case "end":return _context.stop();}}}, _callee, null, [[1, 10]]);}))();
+                }_context.next = 11;break;case 9:_context.prev = 9;_context.t0 = _context["catch"](1);case 11:case "end":return _context.stop();}}}, _callee, null, [[1, 9]]);}))();
 
 
 
@@ -221,7 +221,7 @@ var _default =
       this.collects = collects;
     },
     shopcar: function shopcar(newValue, oldValue) {
-      console.log(newValue);
+      // console.log(newValue)
       if (newValue.msg.errcode) {
         this.cartnum = 0;
       } else if (newValue.msg === 'SUCCESS') {

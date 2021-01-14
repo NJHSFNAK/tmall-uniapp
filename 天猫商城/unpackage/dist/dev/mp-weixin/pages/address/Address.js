@@ -183,7 +183,6 @@ var _default =
                 } else if (res.data.length === 0) {
                   _this.addshow = true;
                 } else {
-                  console.log(res.data);
                   _this.arrdata = res.data;
                   _this.addshow = false;
                 }_context.next = 11;break;case 8:_context.prev = 8;_context.t0 = _context["catch"](0);

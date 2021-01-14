@@ -17,7 +17,7 @@
 				<swiper :indicator-dots="dots"  :interval="3000" :duration="1000" :circular="true"
 					indicator-color="rgba(216, 216, 216)" indicator-active-color="#7a7a7a" @change='bannerFun'>
 					<block v-for="(item,index) in imagetext[0].media" :key='index'>
-						<swiper-item class="swiper-video" v-show="item.video !== ''">
+						<swiper-item class="swiper-video" v-if="item.video !== ''">
 							<view class="video-btn">
 								<view>
 									<!-- 去掉播放按钮、下方进度按钮、视频大小与播放容器保持一致 -->
@@ -109,7 +109,8 @@
 				// 购物车数据
 				shopcar:{},
 				// sku数据
-				skudata:[]
+				skudata:[],
+				// shows: Boolean
 			}
 		},
 		methods: {
@@ -233,6 +234,12 @@
 			// 调用addtocart方法
 			addtocart(mean){
 				this.$refs.addtocart.showcar(mean);
+			},
+			// 返回按钮
+			pageRe(){
+				uni.navigateBack({
+					delta:1
+				})
 			}
 		},
 		created() {
@@ -257,8 +264,9 @@
 				this.$refs.top.change(2);
 			}
 		},
-		onLoad() {
-			this.getRquest('5f8bbf2823954733542169a1');
+		onLoad(e) {
+			console.log(e.id)
+			this.getRquest(e.id);
 		},
 		computed: {
 			name() {

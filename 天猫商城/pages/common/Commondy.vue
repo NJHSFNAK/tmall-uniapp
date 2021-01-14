@@ -1,7 +1,7 @@
 <template>
 	<view class="comm-view">
 		<block v-for="(item,index) in commodcarddata" :key='index'>
-			<view class="comm-card" >
+			<view class="comm-card" @click="drop(item._id)">
 				<view class="comm-img">
 					<image :src="item.image" mode="aspectFill"/>
 				</view>
@@ -30,6 +30,13 @@
 				type: Array,
 				default: []
 			},
+		},
+		methods: {
+			drop(id) {
+				uni.navigateTo({
+					url:'../details/details?id=' +id
+				})
+			}
 		},
 	}
 </script>
