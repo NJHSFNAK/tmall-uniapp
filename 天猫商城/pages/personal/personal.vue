@@ -19,6 +19,7 @@
 	import received from './children/received.vue';
 	import evaluated from './children/evaluated.vue';
 	import delivered from './children/delivered.vue';
+	
 	export default{
 		components: {
 			tobepaid,received,evaluated,delivered
@@ -34,6 +35,9 @@
 				this.num = num;
 			}
 		},
+		onLoad(e) {
+			this.num = e.index *1;
+		}
 	}
 </script>
 

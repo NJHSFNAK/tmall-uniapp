@@ -58,10 +58,30 @@ const urls = class{
 		let queryorderurl = `${url}queryorder`;
 		// 虚拟支付接口
 		let fictpayurl = `${url}fictpay`;
+		// 待付款
+		let tobepaidurl = `${url}tobepaid`;
+		// 待发货、待收货、确定收货的订单详情
+		let tobedetailurl = `${url}tobedetail`;
+		// 删除订单
+		let deleorderurl = `${url}deleorder`;
+		// 待发货
+		let tbdeliveredurl = `${url}tbdelivered`;
+		// 待收货
+		let gtbreceivedurl = `${url}gtbreceived`;
+		// 确认收货
+		let conreceipturl = `${url}conreceipt`;
+		// 待评价
+		let tbevaluatedurl = `${url}tbevaluated`;
+		// 待评价的订单详情
+		let dtpenpageurl = `${url}dtpenpage`;
+		// 商品评价
+		let subcommurl = `${url}subcomm`;
 		return{
 			bannerget,getrecommurl,billboardurl,commodcardurl,searchurl,detailsurl,parameurl,
 				commiturl,comtag,comtconent,collecturl,loginurl,pancolurl,shopcarurl,skuurl,goodskuurl,
-					addcarurl,tokenurl,addressurl,newaddressurl,remaddurl,deleteaddurl,fictpayurl
+					addcarurl,tokenurl,addressurl,newaddressurl,remaddurl,deleteaddurl,fictpayurl,tobepaidurl,
+						tobedetailurl,deleorderurl,tbdeliveredurl,gtbreceivedurl,conreceipturl,tbevaluatedurl,dtpenpageurl,
+							subcommurl,
 		}
 	}
 }

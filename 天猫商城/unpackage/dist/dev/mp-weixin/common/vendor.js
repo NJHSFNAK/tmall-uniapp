@@ -1898,6 +1898,66 @@ new _vuex.default.Store({
 
 /***/ }),
 
+/***/ 115:
+/*!***********************************!*\
+  !*** D:/毕业设计/天猫商城/login/Login.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 43));
+var _request = _interopRequireDefault(__webpack_require__(/*! ../api/request.js */ 15));
+var _api = _interopRequireDefault(__webpack_require__(/*! ../api/api.js */ 13));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}var
+
+wxLogin = /*#__PURE__*/function () {
+  function wxLogin(user, msg) {_classCallCheck(this, wxLogin);
+    this.user = user;
+    this.msg = msg;
+  }_createClass(wxLogin, [{ key: "login", value: function () {var _login = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var userdata, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (!(
+
+
+                this.msg !== "getUserInfo:ok")) {_context.next = 2;break;}throw (
+
+                  '拒绝登录');case 2:_context.next = 4;return (
+
+                  this.getCode());case 4:userdata = _context.sent;_context.next = 7;return (
+                  new _api.default(_request.default.m().loginurl, userdata).modepost());case 7:res = _context.sent;
+                if (res.msg === "SUCCESS") {
+                  uni.setStorageSync('wxuser', res.data);
+                  wx.showToast({
+                    title: '登录成功',
+                    icon: this.icon,
+                    duration: 1300 });
+
+                }case 9:case "end":return _context.stop();}}}, _callee, this);}));function login() {return _login.apply(this, arguments);}return login;}() }, { key: "getCode", value: function getCode()
+
+
+    {var _this = this;
+      return new Promise(function (resolve, reject) {
+        wx.login({
+          success: function success(res) {
+            var data = {
+              appid: 'wx257e4f31f3298b6b',
+              secret: '6f58020c5a27dbea39e842571b34a53c',
+              nickName: _this.user.nickName,
+              avatarUrl: _this.user.avatarUrl,
+              code: res.code };
+
+            resolve(data);
+          },
+          fail: function fail(err) {
+            reject(err);
+          } });
+
+      });
+    } }]);return wxLogin;}();var _default =
+
+wxLogin;exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
 /***/ 12:
 /*!********************************************!*\
   !*** ./node_modules/vuex/dist/vuex.esm.js ***!
@@ -3011,66 +3071,6 @@ var index = {
 
 /***/ }),
 
-/***/ 120:
-/*!***********************************!*\
-  !*** D:/毕业设计/天猫商城/login/Login.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 27));
-var _request = _interopRequireDefault(__webpack_require__(/*! ../api/request.js */ 15));
-var _api = _interopRequireDefault(__webpack_require__(/*! ../api/api.js */ 13));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}var
-
-wxLogin = /*#__PURE__*/function () {
-  function wxLogin(user, msg) {_classCallCheck(this, wxLogin);
-    this.user = user;
-    this.msg = msg;
-  }_createClass(wxLogin, [{ key: "login", value: function () {var _login = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var userdata, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (!(
-
-
-                this.msg !== "getUserInfo:ok")) {_context.next = 2;break;}throw (
-
-                  '拒绝登录');case 2:_context.next = 4;return (
-
-                  this.getCode());case 4:userdata = _context.sent;_context.next = 7;return (
-                  new _api.default(_request.default.m().loginurl, userdata).modepost());case 7:res = _context.sent;
-                if (res.msg === "SUCCESS") {
-                  uni.setStorageSync('wxuser', res.data);
-                  wx.showToast({
-                    title: '登录成功',
-                    icon: this.icon,
-                    duration: 1300 });
-
-                }case 9:case "end":return _context.stop();}}}, _callee, this);}));function login() {return _login.apply(this, arguments);}return login;}() }, { key: "getCode", value: function getCode()
-
-
-    {var _this = this;
-      return new Promise(function (resolve, reject) {
-        wx.login({
-          success: function success(res) {
-            var data = {
-              appid: 'wx257e4f31f3298b6b',
-              secret: '6f58020c5a27dbea39e842571b34a53c',
-              nickName: _this.user.nickName,
-              avatarUrl: _this.user.avatarUrl,
-              code: res.code };
-
-            resolve(data);
-          },
-          fail: function fail(err) {
-            reject(err);
-          } });
-
-      });
-    } }]);return wxLogin;}();var _default =
-
-wxLogin;exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
-
-/***/ }),
-
 /***/ 13:
 /*!*******************************!*\
   !*** D:/毕业设计/天猫商城/api/api.js ***!
@@ -3453,10 +3453,30 @@ var urls = /*#__PURE__*/function () {
       var queryorderurl = "".concat(url, "queryorder");
       // 虚拟支付接口
       var fictpayurl = "".concat(url, "fictpay");
+      // 待付款
+      var tobepaidurl = "".concat(url, "tobepaid");
+      // 待发货、待收货、确定收货的订单详情
+      var tobedetailurl = "".concat(url, "tobedetail");
+      // 删除订单
+      var deleorderurl = "".concat(url, "deleorder");
+      // 待发货
+      var tbdeliveredurl = "".concat(url, "tbdelivered");
+      // 待收货
+      var gtbreceivedurl = "".concat(url, "gtbreceived");
+      // 确认收货
+      var conreceipturl = "".concat(url, "conreceipt");
+      // 待评价
+      var tbevaluatedurl = "".concat(url, "tbevaluated");
+      // 待评价的订单详情
+      var dtpenpageurl = "".concat(url, "dtpenpage");
+      // 商品评价
+      var subcommurl = "".concat(url, "subcomm");
       return {
         bannerget: bannerget, getrecommurl: getrecommurl, billboardurl: billboardurl, commodcardurl: commodcardurl, searchurl: searchurl, detailsurl: detailsurl, parameurl: parameurl,
         commiturl: commiturl, comtag: comtag, comtconent: comtconent, collecturl: collecturl, loginurl: loginurl, pancolurl: pancolurl, shopcarurl: shopcarurl, skuurl: skuurl, goodskuurl: goodskuurl,
-        addcarurl: addcarurl, tokenurl: tokenurl, addressurl: addressurl, newaddressurl: newaddressurl, remaddurl: remaddurl, deleteaddurl: deleteaddurl, fictpayurl: fictpayurl };
+        addcarurl: addcarurl, tokenurl: tokenurl, addressurl: addressurl, newaddressurl: newaddressurl, remaddurl: remaddurl, deleteaddurl: deleteaddurl, fictpayurl: fictpayurl, tobepaidurl: tobepaidurl,
+        tobedetailurl: tobedetailurl, deleorderurl: deleorderurl, tbdeliveredurl: tbdeliveredurl, gtbreceivedurl: gtbreceivedurl, conreceipturl: conreceipturl, tbevaluatedurl: tbevaluatedurl, dtpenpageurl: dtpenpageurl,
+        subcommurl: subcommurl };
 
     } }]);return urls;}();var _default =
 
@@ -9603,18 +9623,141 @@ internalMixin(Vue);
 
 /***/ }),
 
-/***/ 27:
+/***/ 265:
+/*!************************************!*\
+  !*** D:/毕业设计/天猫商城/style/order.css ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+    if(false) { var cssReload; }
+  
+
+/***/ }),
+
+/***/ 278:
+/*!********************************************!*\
+  !*** D:/毕业设计/天猫商城/style/order-details.css ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+    if(false) { var cssReload; }
+  
+
+/***/ }),
+
+/***/ 280:
+/*!**********************************************!*\
+  !*** D:/毕业设计/天猫商城/pages/commonJs/payment.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 43));
+var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ 13));
+var _request = _interopRequireDefault(__webpack_require__(/*! ../../api/request.js */ 15));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}var
+Payment = /*#__PURE__*/function () {
+  function Payment(payment) {_classCallCheck(this, Payment);
+    this.payment = payment;
+  }
+  // 拉取付款
+  _createClass(Payment, [{ key: "paySucc", value: function () {var _paySucc = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.prev = 0;_context.next = 3;return (
+
+
+                  this.wxPay());case 3:_context.next = 8;break;case 5:_context.prev = 5;_context.t0 = _context["catch"](0);throw _context.t0;case 8:_context.prev = 8;_context.next = 11;return (
+
+
+
+
+
+
+                  new _api.default(_request.default.m().queryorderurl, { id: this.payment._id, outno: this.payment.out_trade_no }).modepost());case 11:res = _context.sent;_context.next = 17;break;case 14:_context.prev = 14;_context.t1 = _context["catch"](8);throw (
+
+                  '支付失败');case 17:case "end":return _context.stop();}}}, _callee, this, [[0, 5], [8, 14]]);}));function paySucc() {return _paySucc.apply(this, arguments);}return paySucc;}()
+
+
+    // 查询订单
+  }, { key: "wxPay", value: function wxPay() {var _this = this;
+      return new Promise(function (resolve, reject) {
+        wx.requestPayment({
+          timeStamp: _this.payment.timeStamp,
+          nonceStr: _this.payment.nonceStr,
+          package: _this.payment.package,
+          signType: _this.payment.signType,
+          paySign: _this.payment.paySign,
+          success: function success(res) {
+            resolve(res);
+          },
+          fail: function fail(err) {
+            reject(err);
+          } });
+
+      });
+    } }]);return Payment;}();var _default =
+
+
+Payment;exports.default = _default;
+
+/***/ }),
+
+/***/ 3:
+/*!***********************************!*\
+  !*** (webpack)/buildin/global.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || new Function("return this")();
+} catch (e) {
+	// This works if the window reference is available
+	if (typeof window === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+
+/***/ 4:
+/*!*******************************!*\
+  !*** D:/毕业设计/天猫商城/pages.json ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ 43:
 /*!**********************************************************!*\
   !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
   \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ 28);
+module.exports = __webpack_require__(/*! regenerator-runtime */ 44);
 
 /***/ }),
 
-/***/ 28:
+/***/ 44:
 /*!************************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
   \************************************************************/
@@ -9645,7 +9788,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(/*! ./runtime */ 29);
+module.exports = __webpack_require__(/*! ./runtime */ 45);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -9662,7 +9805,7 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 29:
+/***/ 45:
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -10394,38 +10537,7 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 3:
-/*!***********************************!*\
-  !*** (webpack)/buildin/global.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || new Function("return this")();
-} catch (e) {
-	// This works if the window reference is available
-	if (typeof window === "object") g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-
-/***/ 30:
+/***/ 46:
 /*!********************************************!*\
   !*** D:/毕业设计/天猫商城/pages/commonJs/logic.js ***!
   \********************************************/
@@ -10455,18 +10567,7 @@ Logic;exports.default = _default;
 
 /***/ }),
 
-/***/ 4:
-/*!*******************************!*\
-  !*** D:/毕业设计/天猫商城/pages.json ***!
-  \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-
-/***/ 46:
+/***/ 62:
 /*!***********************************************************!*\
   !*** D:/毕业设计/天猫商城/node_modules/e-commerce_price/index.js ***!
   \***********************************************************/

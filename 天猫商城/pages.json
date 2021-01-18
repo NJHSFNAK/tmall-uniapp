@@ -1,6 +1,14 @@
 {
     "pages" : [
 			{
+			    "path" : "pages/index/index",
+			    "style" : {
+			        "navigationBarTitleText" : "首页",
+			        "navigationBarBackgroundColor" : "#fe0024",
+			        "navigationBarTextStyle" : "white"
+			    }
+			},
+			{
 			    "path" : "pages/personal/personal",
 			    "style" : {
 			        "navigationBarTitleText" : "订单中心",
@@ -9,13 +17,25 @@
 			    }
 			},
 			{
-			    "path" : "pages/index/index",
+			    "path" : "pages/order-details/coment",
 			    "style" : {
-			        "navigationBarTitleText" : "首页",
+			        "navigationBarTitleText" : "商品评价",
 			        "navigationBarBackgroundColor" : "#fe0024",
 			        "navigationBarTextStyle" : "white"
 			    }
 			},
+			{
+			    "path" : "pages/order-details/order",
+			    "style" : {
+			        "navigationBarTitleText" : "订单详情",
+			        "navigationBarBackgroundColor" : "#fe0024",
+			        "navigationBarTextStyle" : "white"
+			    }
+			},
+			
+			
+			
+			
 			{
 				"path" : "pages/details/details",
 				"style" : {

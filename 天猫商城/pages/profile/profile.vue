@@ -13,7 +13,7 @@
 		<!-- 菜单 -->
 		<view class="my-menu">
 			<block v-for="(item,index) in datas" :key='index'>
-				<view>
+				<view @click="myIng(index)">
 					<image :src="item.img" mode="widthFix"></image>
 					<text>{{item.name}}</text>
 				</view>
@@ -69,6 +69,11 @@
 				}catch(e){
 					//TODO handle the exception
 				}
+			},
+			myIng(index){
+				wx.navigateTo({
+					url:'../personal/personal?index='+ index
+				})
 			}
 		},
 		onShow() {

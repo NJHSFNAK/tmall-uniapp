@@ -41,6 +41,9 @@ Vue.component('loginpage',loginpage);
 App.mpType = 'app';
 // 全局样式
 import './style/style.css';
+// 没有订单数据
+import ordering from './pages/common/ordering.vue';
+Vue.component('ordering',ordering);
 
 const app = new Vue({
     ...App
