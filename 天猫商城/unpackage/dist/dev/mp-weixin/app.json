@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/class-goods/goods",
     "pages/personal/personal",
     "pages/order-details/coment",
     "pages/order-details/order",
@@ -58,6 +59,7 @@
     "loader-on": "/pages/common/loading",
     "model": "/pages/common/model",
     "loginpage": "/pages/common/login",
-    "ordering": "/pages/common/ordering"
+    "ordering": "/pages/common/ordering",
+    "fullloading": "/pages/common/full-loading"
   }
 }

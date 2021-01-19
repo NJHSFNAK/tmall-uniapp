@@ -76,12 +76,33 @@ const urls = class{
 		let dtpenpageurl = `${url}dtpenpage`;
 		// 商品评价
 		let subcommurl = `${url}subcomm`;
+		// 一级分类
+		let comclassurl = `${url}comclass`;
+		// 二级分类
+		let secondclassurl = `${url}secondclass`;
+		// 二级分类的商品
+		let queryurl = `${url}queryclass`;
+		// 查询商品(全部、销量、价格)
+		let querycodurl = `${url}querycod`;
+		// 购物车的选中与取消
+		let selectingurl = `${url}selecting`;
+		// 商品的加减
+		let prideurl = `${url}pride`;
+		// 购物车全选和取消全选
+		let selectallurl = `${url}selectall`;
+		// 购物车删除商品
+		let cartdeleteurl = `${url}cartdelete`;
+		// 购物车重选sku
+		let cartskuurl = `${url}cartsku`;
+		// 购物车重选sku并修改
+		let skubaseurl = `${url}skubase`;
 		return{
 			bannerget,getrecommurl,billboardurl,commodcardurl,searchurl,detailsurl,parameurl,
 				commiturl,comtag,comtconent,collecturl,loginurl,pancolurl,shopcarurl,skuurl,goodskuurl,
 					addcarurl,tokenurl,addressurl,newaddressurl,remaddurl,deleteaddurl,fictpayurl,tobepaidurl,
 						tobedetailurl,deleorderurl,tbdeliveredurl,gtbreceivedurl,conreceipturl,tbevaluatedurl,dtpenpageurl,
-							subcommurl,
+							subcommurl,comclassurl,secondclassurl,queryurl,querycodurl,selectingurl,prideurl,selectallurl,cartdeleteurl,
+								cartskuurl,skubaseurl
 		}
 	}
 }

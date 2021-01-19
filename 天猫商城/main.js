@@ -44,6 +44,9 @@ import './style/style.css';
 // 没有订单数据
 import ordering from './pages/common/ordering.vue';
 Vue.component('ordering',ordering);
+// 页面加载full-loading
+import fullloading from './pages/common/full-loading.vue';
+Vue.component('fullloading',fullloading); 
 
 const app = new Vue({
     ...App

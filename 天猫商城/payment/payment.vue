@@ -78,6 +78,8 @@
 				numdata += item.total_price;
 			}
 			this.Totalprice =Price(numdata);
+			let _id = JSON.parse(e.cartdata).filter(item=>item._id)
+			this.idcard = _id.map(item=>item._id)
 		},
 		methods: {
 			address() {
@@ -112,7 +114,6 @@
 				// 虚拟支付接口
 				try{
 					var res = await new this.$Request(this.$Urls.m().fictpayurl,dataobj).modepost();
-					console.log(res);
 					if(res.msg !== 'SUCCESS'){
 						throw res.msg
 					}else{
@@ -126,10 +127,12 @@
 				}; 
 				// 调用支付
 				try{
-					console.log(res);
 					// 虚拟支付
 					if(res.msg === 'SUCCESS'){
 						new this.$Toast('支付成功','none').showtoast();
+						wx.navigateTo({
+							url:'../personal/personal?index='+ 1
+						})
 					}else{
 						throw '支付失败'
 					}

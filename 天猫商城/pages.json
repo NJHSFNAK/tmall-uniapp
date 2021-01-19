@@ -9,6 +9,15 @@
 			    }
 			},
 			{
+			    "path" : "pages/class-goods/goods",
+			    "style" : {
+			        "navigationBarTitleText" : "商品分类",
+			        "navigationBarBackgroundColor" : "#fe0024",
+			        "navigationBarTextStyle" : "white"
+			    }
+			},
+			
+			{
 			    "path" : "pages/personal/personal",
 			    "style" : {
 			        "navigationBarTitleText" : "订单中心",
@@ -87,8 +96,9 @@
         {
             "path" : "pages/shopping/shopping",
             "style" : {
-                "navigationBarTitleText" : "购物车",
-                "navigationBarTextStyle" : "white"
+              "navigationBarTitleText" : "购物车",
+              "navigationBarBackgroundColor" : "#fe0024",
+              "navigationBarTextStyle" : "white"
             }
         },
         {

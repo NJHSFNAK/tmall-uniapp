@@ -8,10 +8,10 @@
 				</view>
 			</view>
 			<!-- 顶部导航栏 -->
-			<view class="header-fixed backyes" v-show="!showAbs" :style="{opacity: styleObject}">
-				<view class="status_bar" :style=" 'margin-top:' + tophight.height + 'px;' "></view>
-				<top :topheight='topheight' ref='top'></top>
-			</view>
+			<view class="header-fixed backyes" v-show="!showAbs" :style="{opacity:styleObject}">
+					<view class="status_bar" :style=" 'height:' + tophight.top + 'px;' "></view>
+					<top :tophight='tophight' ref='top'></top>
+				</view>
 			<!-- 图片视频轮播 -->
 			<view>
 				<swiper :indicator-dots="dots"  :interval="3000" :duration="1000" :circular="true"
@@ -52,6 +52,8 @@
 			<bottom :goodid='goodid' :collectdata='collectdata' :shopcar='shopcar'></bottom>
 			<!-- 公共的sku -->
 			<addtocart ref='addtocart' :skudata='skudata'></addtocart>
+			<!-- loading -->
+			<fullloading ref='loading'></fullloading>
 	</view>
 </template>
 
@@ -247,6 +249,7 @@
 			this.tophight = uni.getMenuButtonBoundingClientRect();
 		},
 		mounted() {
+			this.$refs.loading.init();
 			this.videoPlay = uni.createVideoContext('myVideo');
 			this.top('.evaluate');
 			this.top('.produce');

@@ -7,6 +7,8 @@
 		<Commondy :commodcarddata='commodcarddata'></Commondy>
 		<!-- 上拉加载更多 -->
 		<loader-on ref='loadon'></loader-on>
+		<!-- loading -->
+		<fullloading ref='loading'></fullloading>
 	</view>
 </template>
 
@@ -87,6 +89,9 @@
 			this.$refs.loadon.loAd(value)
 			this.page = this.page+ 1;
 			this.pullUp();
+		},
+		mounted() {
+			this.$refs.loading.init();
 		}
 	}
 </script>

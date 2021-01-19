@@ -5,7 +5,7 @@
 				<image src="/static/details/fenxiang.svg" mode="widthFix"/>
 				<text>分享</text>
 			</view>
-			<view class="shopping-text middle">
+			<view class="shopping-text middle" @click="toCar">
 				<image src="/static/details/gouwuche.svg" mode="widthFix"/>
 				<text>购物车</text>
 				<text>{{cartnum}}</text>
@@ -71,6 +71,12 @@
 			// 展示购物车界面
 			showcarFun(mean){
 				this.$parent.addtocart(mean);
+			},
+			toCar(){
+				console.log('111')
+				wx.navigateTo({
+					url:'pages/shopping/shopping'	
+				})
 			}
 		},
 		// 接收登录组件传过来的值

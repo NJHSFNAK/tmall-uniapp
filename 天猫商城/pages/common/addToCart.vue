@@ -44,7 +44,7 @@
 				</view>
 			</view>
 			<!-- 购买数量 -->
-			<view class="sku-view sku-height" >
+			<view class="sku-view sku-height" v-if="mean !== '001'">
 				<view class="sku-title numes">购买数量</view>
 				<view class="sku-mums-gight">
 					<view @click="sub">-</view>
@@ -54,6 +54,7 @@
 			</view>
 		</view>
 		<!-- 确定 -->
+		<button class="determine coup-anim" v-if="mean === '001'" :disabled="!skumen.ban" @click="modifysku">确定</button>
 		<button class="determine coup-anim" v-if="mean === '002'" :disabled="!skumen.ban" @click="detErmine">确定</button>
 		<button class="determine coup-anim" v-if="mean === '003'" :disabled="!skumen.ban" @click="purchase">确定</button>
 		<!-- <view class="determine coup-anim" >确定</view> -->
@@ -74,7 +75,7 @@
 			return {
 				// 控制整个组件的显示与隐藏	
 				couponif: false,
-				// 002是加入购物车，003是直接购买
+				// 002是加入购物车，003是直接购买,001是购物车重新选
 				mean: '002',
 				// 商品图片库存等数据
 				attr:{},
@@ -87,14 +88,28 @@
 				colorValue:'',
 				sizeValue:'',
 				// 购买商品的个数
-				many: 1
+				many: 1,
+				// 购物车_id
+				_id:'',
+				// 购物车商品数量
+				momany: 1,
+				
 			}
 		},
 		methods:{
 			// 组件显示
-			showcar(mean){
+			showcar(mean,obj={}){
 				this.couponif = true;
 				this.mean = mean;
+				if(mean === '001'){
+					let {sku,_id,size,color,many}= obj;
+					this._id= _id;
+					this.momany = many;	
+					this.sizeindex = sku[0].findIndex((item)=>item === size);
+					this.colorindex = sku[1].findIndex((item)=> item.color === color);
+					this.colorValue = color;
+					this.sizeValue = size;
+				}
 			},
 			// 组件隐藏
 			hidecar(){
@@ -178,6 +193,28 @@
 					uni.navigateTo({
 						url:'../../payment/payment?cartdata=' + cartdata
 					})
+				}
+			},
+			// 购物车修改sku
+			async modifysku(){
+				let data={
+					id: this._id,
+					skuid: this.id,
+					size: this.sizeValue,
+					color: this.colorValue,
+					image: this.attr.image,
+					price: this.attr.price,
+					many: this.momany,
+				}
+				try{
+					let res = await new this.$Request(this.$Urls.m().skubaseurl,data).modepost();
+					console.log(res);
+					if(res.msg === 'SUCCESS'){
+						this.hidecar();
+						this.$bus.$emit('mycart',{cart: res.msg})
+					}
+				}catch(e){
+					//TODO handle the exception
 				}
 			}
 		},
