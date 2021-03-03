@@ -1,7 +1,4 @@
 {
-  "navigationBarTitleText": "购物车",
-  "navigationBarBackgroundColor": "#fe0024",
-  "navigationBarTextStyle": "white",
   "usingComponents": {
     "addtocart": "/pages/common/addToCart"
   }

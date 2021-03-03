@@ -41,10 +41,6 @@
 			        "navigationBarTextStyle" : "white"
 			    }
 			},
-			
-			
-			
-			
 			{
 				"path" : "pages/details/details",
 				"style" : {
@@ -92,15 +88,6 @@
                 "navigationBarTextStyle" : "white"
             }
         },
-				
-        {
-            "path" : "pages/shopping/shopping",
-            "style" : {
-              "navigationBarTitleText" : "购物车",
-              "navigationBarBackgroundColor" : "#fe0024",
-              "navigationBarTextStyle" : "white"
-            }
-        },
         {
             "path" : "pages/profile/profile",
             "style" : {
@@ -113,7 +100,11 @@
         {
             "path" : "pages/details/children/Bottom",
             "style" : {}
-        }
+        },
+				{
+				    "path" : "pages/shopping/shopping",
+				    "style" : {}
+				}
     ],
     "globalStyle" : {
         "navigationBarTextStyle" : "black",

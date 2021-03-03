@@ -74,9 +74,9 @@
 			},
 			toCar(){
 				console.log('111')
-				wx.navigateTo({
-					url:'pages/shopping/shopping'	
-				})
+				// wx.navigateTo({
+				// 	url:'pages/shopping/shopping'	 
+				// })
 			}
 		},
 		// 接收登录组件传过来的值

@@ -1,0 +1,1 @@
+<block wx:if="{{show}}"><view class="login-page data-v-52ea2684"><button type="primary" open-type="getUserInfo" data-event-opts="{{[['getuserinfo',[['getUserInfo',['$event']]]]]}}" bindgetuserinfo="__e" class="data-v-52ea2684">登录</button></view></block>

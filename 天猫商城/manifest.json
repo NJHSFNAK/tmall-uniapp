@@ -63,7 +63,7 @@
             "es6" : true,
             "postcss" : true,
             "minified" : true,
-						"checkSitMap": false
+            "checkSitMap" : false
         },
         "usingComponents" : true
     },

@@ -1,0 +1,64 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/class-goods/goods",
+    "pages/personal/personal",
+    "pages/order-details/coment",
+    "pages/order-details/order",
+    "pages/details/details",
+    "payment/payment",
+    "pages/address/Address",
+    "pages/address/newAddress",
+    "pages/commonEval/Evals",
+    "pages/search/Search",
+    "pages/sort/sort",
+    "pages/profile/profile",
+    "pages/details/children/Bottom"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#333",
+    "selectedColor": "#F78E15",
+    "borderStyle": "black",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "static/tab/tab-a.png",
+        "selectedIconPath": "static/tab/tab-b.png"
+      },
+      {
+        "pagePath": "pages/sort/sort",
+        "text": "分类",
+        "iconPath": "static/tab/tab-c.png",
+        "selectedIconPath": "static/tab/tab-d.png"
+      },
+      {
+        "pagePath": "pages/shopping/shopping",
+        "text": "购物车",
+        "iconPath": "static/tab/tab-e.png",
+        "selectedIconPath": "static/tab/tab-f.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "static/tab/tab-g.png",
+        "selectedIconPath": "static/tab/tab-h.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "loader-on": "/pages/common/loading",
+    "model": "/pages/common/model",
+    "loginpage": "/pages/common/login",
+    "ordering": "/pages/common/ordering",
+    "fullloading": "/pages/common/full-loading"
+  }
+}

@@ -1,6 +1,6 @@
 (global["webpackJsonp"] = global["webpackJsonp"] || []).push([["pages/details/children/Bottom"],{
 
-/***/ 150:
+/***/ 142:
 /*!***************************************************************************!*\
   !*** D:/毕业设计/天猫商城/main.js?{"page":"pages%2Fdetails%2Fchildren%2FBottom"} ***!
   \***************************************************************************/
@@ -206,9 +206,9 @@ var _default =
     },
     toCar: function toCar() {
       console.log('111');
-      wx.navigateTo({
-        url: 'pages/shopping/shopping' });
-
+      // wx.navigateTo({
+      // 	url:'pages/shopping/shopping'	 
+      // })
     } },
 
   // 接收登录组件传过来的值
@@ -269,5 +269,5 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ })
 
-},[[150,"common/runtime","common/vendor"]]]);
+},[[142,"common/runtime","common/vendor"]]]);
 //# sourceMappingURL=../../../../.sourcemap/mp-weixin/pages/details/children/Bottom.js.map

@@ -107,7 +107,7 @@
 				new this.$Request
 				(this.$Urls.m().searchurl+'?keyword='+value+'&&page='+this.page).modeget()
 					.then((res)=>{
-						// 上拉 加载更多
+						// 上拉加载更多
 						if(this.page !== 0){
 							if(res.length === 0){
 								this.$refs.loadon.loAd({whether: true, tips:'没有更多了',picture: false})
@@ -207,3 +207,4 @@
 		flex-wrap: wrap;
 	}
 </style>
+

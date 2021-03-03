@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "model": "/pages/common/model"
+  },
+  "component": true
+}

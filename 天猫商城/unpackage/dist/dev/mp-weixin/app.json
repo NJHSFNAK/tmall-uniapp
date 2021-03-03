@@ -12,9 +12,9 @@
     "pages/commonEval/Evals",
     "pages/search/Search",
     "pages/sort/sort",
-    "pages/shopping/shopping",
     "pages/profile/profile",
-    "pages/details/children/Bottom"
+    "pages/details/children/Bottom",
+    "pages/shopping/shopping"
   ],
   "subPackages": [],
   "window": {

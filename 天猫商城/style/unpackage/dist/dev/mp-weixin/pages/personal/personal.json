@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "订单中心",
+  "navigationBarBackgroundColor": "#fe0024",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "tobepaid": "/pages/personal/children/tobepaid",
+    "received": "/pages/personal/children/received",
+    "evaluated": "/pages/personal/children/evaluated",
+    "delivered": "/pages/personal/children/delivered"
+  }
+}

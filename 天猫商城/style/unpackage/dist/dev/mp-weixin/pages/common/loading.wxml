@@ -1,0 +1,1 @@
+<block wx:if="{{loading}}"><view class="loading-men data-v-4245e1d1"><text class="data-v-4245e1d1">{{tips}}</text></view></block>
