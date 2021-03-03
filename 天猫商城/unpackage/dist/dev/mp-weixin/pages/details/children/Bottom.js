@@ -206,9 +206,9 @@ var _default =
     },
     toCar: function toCar() {
       console.log('111');
-      // wx.navigateTo({
-      // 	url:'pages/shopping/shopping'	 
-      // })
+      wx.switchTab({
+        url: '/pages/shopping/shopping' });
+
     } },
 
   // 接收登录组件传过来的值

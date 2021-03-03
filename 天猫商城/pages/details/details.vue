@@ -1,5 +1,8 @@
 <template>
-	<view>
+	<view v-if='showShop' class="showShop">
+		该商品已下架，请选择同类型的其他产品
+	</view>
+	<view v-else>
 		<!-- 返回按钮 -->
 			<view class="header-fixed backno" v-show="showAbs">
 				<view class="status_bar" :style=" 'height:' + tophight.top + 'px;' "></view>
@@ -112,7 +115,9 @@
 				shopcar:{},
 				// sku数据
 				skudata:[],
-				// shows: Boolean
+				// shows: Boolean，
+				// 控制商品的显示与隐藏
+				showShop: false
 			}
 		},
 		methods: {
@@ -164,6 +169,12 @@
 				// 轮播信息、价格参数信息
 				let detail= new this.$Request(this.$Urls.m().detailsurl+'?id='+id).modeget()
 				.then((res)=>{	
+					if(res[0]=== undefined){
+						this.showShop = true;
+						return false;
+					}else{
+						this.showShop = false;
+					}
 					this.imagetext = res;
 					this.goodid = res[0].id;
 					// 获取视频的播放地址
@@ -345,5 +356,13 @@
 	.video-btn{
 		height: 700upx; 
 		position: relative;
+	}
+	.showShop{
+		width: 100%;
+		text-align: center;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%);
 	}
 </style>

@@ -3130,7 +3130,7 @@ wxLogin = /*#__PURE__*/function () {
           success: function success(res) {
             var data = {
               appid: 'wx257e4f31f3298b6b',
-              secret: '6f58020c5a27dbea39e842571b34a53c',
+              secret: 'c26e17f504594691bf158acacbb58e8c',
               nickName: _this.user.nickName,
               avatarUrl: _this.user.avatarUrl,
               code: res.code };

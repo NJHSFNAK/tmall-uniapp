@@ -262,8 +262,8 @@ var Price = __webpack_require__(/*! e-commerce_price */ 90);var _default =
 
                 res.msg === 'SUCCESS')) {_context.next = 27;break;}
                 new _this.$Toast('支付成功', 'none').showtoast();
-                wx.navigateTo({
-                  url: '../personal/personal?index=' + 1 });_context.next = 28;break;case 27:throw (
+                wx.redirectTo({
+                  url: '/pages/personal/personal?index=' + 1 });_context.next = 28;break;case 27:throw (
 
 
                   '支付失败');case 28:_context.next = 33;break;case 30:_context.prev = 30;_context.t1 = _context["catch"](21);throw _context.t1;case 33:

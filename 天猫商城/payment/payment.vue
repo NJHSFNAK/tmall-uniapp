@@ -130,8 +130,8 @@
 					// 虚拟支付
 					if(res.msg === 'SUCCESS'){
 						new this.$Toast('支付成功','none').showtoast();
-						wx.navigateTo({
-							url:'../personal/personal?index='+ 1
+						wx.redirectTo({
+							url:'/pages/personal/personal?index='+ 1
 						})
 					}else{
 						throw '支付失败'
