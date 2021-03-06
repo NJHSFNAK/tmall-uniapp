@@ -61,5 +61,6 @@
     "loginpage": "/pages/common/login",
     "ordering": "/pages/common/ordering",
     "fullloading": "/pages/common/full-loading"
-  }
+  },
+  "sitemapLocation": "sitemap47.json"
 }

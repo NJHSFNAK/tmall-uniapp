@@ -1,10 +1,6 @@
 <template>
 	<view v-if='showShop' class="showShop">
-<<<<<<< HEAD
 		该商品已下架，请选择同类型的其他产品
-=======
-		该商品信息已经下架，请选择同类型的产品
->>>>>>> e33542a4cb876adaf6adec7b473296f5eeff76d3
 	</view>
 	<view v-else>
 		<!-- 返回按钮 -->
@@ -88,7 +84,7 @@
 				// 获取胶囊按钮的数据
 				tophight:{},
 				// 返回按钮
-				showAbs: false,
+				showAbs: true,
 				// 透明度
 				styleObject: 0,
 				// 找到视频上下文
@@ -362,11 +358,8 @@
 		position: relative;
 	}
 	.showShop{
-<<<<<<< HEAD
 		width: 100%;
 		text-align: center;
-=======
->>>>>>> e33542a4cb876adaf6adec7b473296f5eeff76d3
 		position: absolute;
 		top: 50%;
 		left: 50%;

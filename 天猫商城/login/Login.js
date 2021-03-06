@@ -30,7 +30,6 @@ class wxLogin{
 			wx.login({
 				success:(res)=>{
 					let data = {
-						// 个人的appid和secret，均在微信开发平台获取
 						appid:'',
 						secret:'',
 						nickName: this.user.nickName,
