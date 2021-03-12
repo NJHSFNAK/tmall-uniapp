@@ -801,7 +801,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_NAME":"天猫商城","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_NAME":"天猫商城","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -1858,9 +1858,9 @@ function normalizeComponent (
 /***/ }),
 
 /***/ 11:
-/*!*****************************************!*\
-  !*** D:/毕业设计/bishe/天猫商城/store/index.js ***!
-  \*****************************************/
+/*!**************************************!*\
+  !*** E:/学习/毕业设计/天猫商城/store/index.js ***!
+  \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3012,9 +3012,9 @@ var index = {
 /***/ }),
 
 /***/ 13:
-/*!*************************************!*\
-  !*** D:/毕业设计/bishe/天猫商城/api/api.js ***!
-  \*************************************/
+/*!**********************************!*\
+  !*** E:/学习/毕业设计/天猫商城/api/api.js ***!
+  \**********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3053,7 +3053,6 @@ var request = /*#__PURE__*/function () {
 
         then(function (res) {
           resolve(res[1].data.data);
-          // resolve(res[1].data)
         }).
         catch(function (err) {
           reject(err);
@@ -3090,9 +3089,9 @@ request;exports.default = _default;
 /***/ }),
 
 /***/ 139:
-/*!*****************************************!*\
-  !*** D:/毕业设计/bishe/天猫商城/login/Login.js ***!
-  \*****************************************/
+/*!**************************************!*\
+  !*** E:/学习/毕业设计/天猫商城/login/Login.js ***!
+  \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3108,12 +3107,17 @@ wxLogin = /*#__PURE__*/function () {
   }_createClass(wxLogin, [{ key: "login", value: function () {var _login = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var userdata, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (!(
 
 
-                this.msg !== "getUserInfo:ok")) {_context.next = 2;break;}throw (
+                this.msg !== "getUserInfo:ok")) {_context.next = 3;break;}
+                wx.showToast({
+                  title: '登录失败',
+                  icon: 'none',
+                  duration: 1300 });
 
-                  '拒绝登录');case 2:_context.next = 4;return (
+                // 抛出异常，阻止下面继续运行
+                throw '拒绝登录';case 3:_context.next = 5;return (
 
-                  this.getCode());case 4:userdata = _context.sent;_context.next = 7;return (
-                  new _api.default(_request.default.m().loginurl, userdata).modepost());case 7:res = _context.sent;
+                  this.getCode());case 5:userdata = _context.sent;_context.next = 8;return (
+                  new _api.default(_request.default.m().loginurl, userdata).modepost());case 8:res = _context.sent;
                 if (res.msg === "SUCCESS") {
                   uni.setStorageSync('wxuser', res.data);
                   wx.showToast({
@@ -3121,7 +3125,7 @@ wxLogin = /*#__PURE__*/function () {
                     icon: this.icon,
                     duration: 1300 });
 
-                }case 9:case "end":return _context.stop();}}}, _callee, this);}));function login() {return _login.apply(this, arguments);}return login;}() }, { key: "getCode", value: function getCode()
+                }case 10:case "end":return _context.stop();}}}, _callee, this);}));function login() {return _login.apply(this, arguments);}return login;}() }, { key: "getCode", value: function getCode()
 
 
     {var _this = this;
@@ -3129,8 +3133,8 @@ wxLogin = /*#__PURE__*/function () {
         wx.login({
           success: function success(res) {
             var data = {
-              appid: '',
-              secret: '',
+              appid: 'wx257e4f31f3298b6b',
+              secret: 'c26e17f504594691bf158acacbb58e8c',
               nickName: _this.user.nickName,
               avatarUrl: _this.user.avatarUrl,
               code: res.code };
@@ -3150,9 +3154,9 @@ wxLogin;exports.default = _default;
 /***/ }),
 
 /***/ 14:
-/*!****************************************!*\
-  !*** D:/毕业设计/bishe/天猫商城/api/base64.js ***!
-  \****************************************/
+/*!*************************************!*\
+  !*** E:/学习/毕业设计/天猫商城/api/base64.js ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3380,14 +3384,14 @@ function (global) {
   // that's it!
   return { Base64: global.Base64 };
 });
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../火狐下载文件/HBuilderX/plugins/uniapp-cli/node_modules/webpack/buildin/global.js */ 3)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! (webpack)/buildin/global.js */ 3)))
 
 /***/ }),
 
 /***/ 15:
-/*!*****************************************!*\
-  !*** D:/毕业设计/bishe/天猫商城/api/request.js ***!
-  \*****************************************/
+/*!**************************************!*\
+  !*** E:/学习/毕业设计/天猫商城/api/request.js ***!
+  \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3506,9 +3510,9 @@ urls;exports.default = _default;
 /***/ }),
 
 /***/ 16:
-/*!*********************************************!*\
-  !*** D:/毕业设计/bishe/天猫商城/pattern/animat.css ***!
-  \*********************************************/
+/*!******************************************!*\
+  !*** E:/学习/毕业设计/天猫商城/pattern/animat.css ***!
+  \******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3519,9 +3523,9 @@ urls;exports.default = _default;
 /***/ }),
 
 /***/ 17:
-/*!*********************************************!*\
-  !*** D:/毕业设计/bishe/天猫商城/pattern/styles.css ***!
-  \*********************************************/
+/*!******************************************!*\
+  !*** E:/学习/毕业设计/天猫商城/pattern/styles.css ***!
+  \******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3532,9 +3536,9 @@ urls;exports.default = _default;
 /***/ }),
 
 /***/ 18:
-/*!************************************************!*\
-  !*** D:/毕业设计/bishe/天猫商城/pages/commonJs/bus.js ***!
-  \************************************************/
+/*!*********************************************!*\
+  !*** E:/学习/毕业设计/天猫商城/pages/commonJs/bus.js ***!
+  \*********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3546,9 +3550,9 @@ var _default = new _vue.default();exports.default = _default;
 /***/ }),
 
 /***/ 19:
-/*!**************************************************!*\
-  !*** D:/毕业设计/bishe/天猫商城/pages/commonJs/toast.js ***!
-  \**************************************************/
+/*!***********************************************!*\
+  !*** E:/学习/毕业设计/天猫商城/pages/commonJs/toast.js ***!
+  \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9109,7 +9113,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_NAME":"天猫商城","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_NAME":"天猫商城","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -9130,14 +9134,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_NAME":"天猫商城","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_NAME":"天猫商城","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_NAME":"天猫商城","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_NAME":"天猫商城","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -9223,7 +9227,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_NAME":"天猫商城","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_NAME":"天猫商城","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -9631,9 +9635,9 @@ internalMixin(Vue);
 /***/ }),
 
 /***/ 20:
-/*!******************************************!*\
-  !*** D:/毕业设计/bishe/天猫商城/style/style.css ***!
-  \******************************************/
+/*!***************************************!*\
+  !*** E:/学习/毕业设计/天猫商城/style/style.css ***!
+  \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10578,9 +10582,9 @@ var isArray = Array.isArray || function (xs) {
 /***/ }),
 
 /***/ 4:
-/*!*************************************!*\
-  !*** D:/毕业设计/bishe/天猫商城/pages.json ***!
-  \*************************************/
+/*!**********************************!*\
+  !*** E:/学习/毕业设计/天猫商城/pages.json ***!
+  \**********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -10686,9 +10690,9 @@ var objectKeys = Object.keys || function (obj) {
 /***/ }),
 
 /***/ 57:
-/*!**************************************************!*\
-  !*** D:/毕业设计/bishe/天猫商城/pages/commonJs/logic.js ***!
-  \**************************************************/
+/*!***********************************************!*\
+  !*** E:/学习/毕业设计/天猫商城/pages/commonJs/logic.js ***!
+  \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10716,9 +10720,9 @@ Logic;exports.default = _default;
 /***/ }),
 
 /***/ 66:
-/*!******************************************!*\
-  !*** D:/毕业设计/bishe/天猫商城/style/order.css ***!
-  \******************************************/
+/*!***************************************!*\
+  !*** E:/学习/毕业设计/天猫商城/style/order.css ***!
+  \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10729,9 +10733,9 @@ Logic;exports.default = _default;
 /***/ }),
 
 /***/ 67:
-/*!**************************************************!*\
-  !*** D:/毕业设计/bishe/天猫商城/style/order-details.css ***!
-  \**************************************************/
+/*!***********************************************!*\
+  !*** E:/学习/毕业设计/天猫商城/style/order-details.css ***!
+  \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10742,9 +10746,9 @@ Logic;exports.default = _default;
 /***/ }),
 
 /***/ 68:
-/*!****************************************************!*\
-  !*** D:/毕业设计/bishe/天猫商城/pages/commonJs/payment.js ***!
-  \****************************************************/
+/*!*************************************************!*\
+  !*** E:/学习/毕业设计/天猫商城/pages/commonJs/payment.js ***!
+  \*************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10767,7 +10771,8 @@ Payment = /*#__PURE__*/function () {
 
 
 
-                  new _api.default(_request.default.m().queryorderurl, { id: this.payment._id, outno: this.payment.out_trade_no }).modepost());case 11:res = _context.sent;_context.next = 17;break;case 14:_context.prev = 14;_context.t1 = _context["catch"](8);throw (
+                  new _api.default(_request.default.m().queryorderurl,
+                  { id: this.payment._id, outno: this.payment.out_trade_no }).modepost());case 11:res = _context.sent;_context.next = 17;break;case 14:_context.prev = 14;_context.t1 = _context["catch"](8);throw (
 
                   '支付失败');case 17:case "end":return _context.stop();}}}, _callee, this, [[0, 5], [8, 14]]);}));function paySucc() {return _paySucc.apply(this, arguments);}return paySucc;}()
 
@@ -10797,9 +10802,9 @@ Payment;exports.default = _default;
 /***/ }),
 
 /***/ 90:
-/*!*****************************************************************!*\
-  !*** D:/毕业设计/bishe/天猫商城/node_modules/e-commerce_price/index.js ***!
-  \*****************************************************************/
+/*!**************************************************************!*\
+  !*** E:/学习/毕业设计/天猫商城/node_modules/e-commerce_price/index.js ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 

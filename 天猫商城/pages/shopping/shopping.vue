@@ -195,7 +195,7 @@
 				uni.hideLoading();
 			  }catch(e){
 				//TODO handle the exception
-				throw e
+					throw e
 			  }
 			},
 			// 重选sku
@@ -215,7 +215,7 @@
 		},
 		mounted() {
 			this.$bus.$on('mycart',(res)=>{
-				if(res.cart === 'SUCCESS'){
+				if(res.data === 'SUCCESS'){
 					this.mycart();
 				}
 			})

@@ -16,7 +16,8 @@ class Payment{
 		}
 		// 2.查询订单状态
 		try{
-			let res = await new request(url.m().queryorderurl, {id: this.payment._id, outno: this.payment.out_trade_no}).modepost();
+			let res = await new request(url.m().queryorderurl, 
+			{id: this.payment._id, outno: this.payment.out_trade_no}).modepost();
 		}catch(e){
 			throw '支付失败'
 		}

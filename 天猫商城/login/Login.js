@@ -10,6 +10,11 @@ class wxLogin{
 	async login(){
 		// 拒绝登陆
 		if(this.msg !=="getUserInfo:ok"){
+			wx.showToast({
+				title:'登录失败',
+				icon: 'none',
+				duration: 1300,
+			})
 			// 抛出异常，阻止下面继续运行
 			throw('拒绝登录');
 		}
@@ -20,7 +25,7 @@ class wxLogin{
 			wx.showToast({
 				title:'登录成功',
 				icon: this.icon,
-				duration: 1300,
+				duration: 1300
 			})
 		}
 	}
@@ -30,8 +35,8 @@ class wxLogin{
 			wx.login({
 				success:(res)=>{
 					let data = {
-						appid:'',
-						secret:'',
+						appid:'wx257e4f31f3298b6b',
+						secret:'c26e17f504594691bf158acacbb58e8c',
 						nickName: this.user.nickName,
 						avatarUrl: this.user.avatarUrl,
 						code: res.code

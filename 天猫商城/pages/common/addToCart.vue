@@ -236,11 +236,11 @@
 			// 监听加入购物车成功后，存储数据到vuex，然后监听vuex数据的变化
 			'$store.state.cartnum'(newValue, oldValue){
 				console.log(newValue.nums);
+				// this.
 			}
 		},
 		computed: {
 			choice() {
-				// return this.data 
 				if(this.sizeValue !== '' || this.colorValue !== ''){
 					return '请选择'
 				}else{

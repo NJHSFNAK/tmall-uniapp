@@ -32,7 +32,6 @@ const request = class{
 			})
 			.then((res)=>{
 				resolve(res[1].data.data)
-				// resolve(res[1].data)
 			})
 			.catch((err)=>{
 				reject(err)

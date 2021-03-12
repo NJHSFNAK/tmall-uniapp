@@ -85,6 +85,7 @@
 					"path" : "pages/sort/sort",
 					"style" : {
 						"navigationBarTitleText" : "分类",
+						"navigationBarBackgroundColor" : "#fe0024",
 						"navigationBarTextStyle" : "white"
 					}
 				},

@@ -6,7 +6,7 @@
 		</view>
 		<view class="navs">
 			<block v-for="(item, index) in navalue" :key="index">
-				<view class="navs-nav" :class="{navactivetext: index == num}"
+				<view class="navs-nav" :class="{navactivetext: index === num}"
 				:style=" 'height:' + tophight.height + 'px;' + 'line-height:' +  tophight.height + 'px;' "
 				@click="navbtn(index)">{{item.name}}</view>
 			</block>

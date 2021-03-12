@@ -159,6 +159,7 @@
 				// }
 			},
 			wxPay(payment){
+				// 返回Promise
 				return new Promise((resolve,reject)=>{
 					wx.requestPayment({
 						...payment,

@@ -69,16 +69,21 @@
 			},
 			// 收货地址
 			async saveAddress(){
+				let data = {city: this.city, address: this.address, name: this.name, mobile: this.mobile};
 				try{
-					let data = {city: this.city, address: this.address, name: this.name, mobile: this.mobile};
 					let res = await new this.$Request(this.$Urls.m().newaddressurl, data).modepost();
+					console.log(res);
 					if(res.msg === 'SUCCESS'){
 						new this.$Toast('提交成功').showtoast();
 						uni.navigateBack({
 							delta: 1
 						})
 					}else{
-						new this.$Toast(res.msg,'none').showtoast();
+						if(res.msg === '参数填写错误'){
+							new this.$Toast('信息填写有错误或漏填','none').showtoast();
+						}else{
+							new this.$Toast(res.msg,'none').showtoast();
+						}
 					}
 				}catch(e){
 					//TODO handle the exception
@@ -90,7 +95,7 @@
 				try{
 					let data = {id:this.id,city: this.city, address: this.address, name: this.name, mobile: this.mobile};
 					let res = await new this.$Request(this.$Urls.m().remaddurl, data).modepost();
-					console.log(res);
+					// console.log(res);
 					if(res.msg === "SUCCESS"){
 						new this.$Toast('修改成功').showtoast();
 						uni.navigateBack({
@@ -120,12 +125,12 @@
 					}
 				}catch(e){
 					//TODO handle the exception
-					console.log()
+					console.log(e)
 				}
 			}
 		},
 		onLoad(e) {
-			console.log(e)
+			// console.log(e)
 			let data = JSON.parse(e.data);
 			console.log(data.data);
 			this.address = data.data.address;

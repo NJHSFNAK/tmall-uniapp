@@ -1,6 +1,12 @@
 <template>
-	<view v-if='showShop' class="showShop">
-		该商品已下架，请选择同类型的其他产品
+	<view v-if='showShop'>
+		<view class="header-fixed backno" v-show="showAbs">
+			<view class="status_bar" :style=" 'height:' + tophight.top + 'px;' "></view>
+			<view class="navs-image" :style=" 'height:' + tophight.height + 'px;'"@click="pageRe()">
+				<image src="/static/details/fanhuibai.jpg" mode="widthFix"></image>
+			</view>
+		</view>
+		<view class="showShop">该商品已下架，请选择同类型的其他产品</view>
 	</view>
 	<view v-else>
 		<!-- 返回按钮 -->
@@ -279,7 +285,6 @@
 			}
 		},
 		onLoad(e) {
-			console.log(e.id)
 			this.getRquest(e.id);
 		},
 		computed: {

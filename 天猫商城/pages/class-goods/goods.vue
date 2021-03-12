@@ -35,7 +35,7 @@
 				savo: 1,
 				// 按价格
 				pai: 1,
-				rotate: true
+				rotate: false
 			}
 		},
 		methods: {

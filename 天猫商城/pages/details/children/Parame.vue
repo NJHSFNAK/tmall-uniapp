@@ -1,5 +1,5 @@
 <template>
-	<view v-if="show">
+	<view v-if="show" class="parame">
 		<view class="Coupon-yin anim" :catchtouchmove="true" @click="hideCou"></view>
 		<view class="Coupon-view coup-anim">
 			<view class="<Coupon-titl></Coupon-titl>e">产品参数</view>
@@ -38,6 +38,9 @@
 </script>
 
 <style scoped>
+	.parame{
+		z-index: 9;
+	}
 	.parame-view{
 		font-size: 28rpx; 
 		display: flex; 

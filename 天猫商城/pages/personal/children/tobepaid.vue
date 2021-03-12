@@ -52,7 +52,6 @@
 			async getdata() {
 				try{
 					let res = await new this.$Request(this.$Urls.m().tobepaidurl).modeGet();
-					console.log(res);
 					if(res.msg.errcode === "401"){
 						this.$refs.loginmen.shows();
 					}else if(res.msg === 'SUCCESS'){
@@ -105,7 +104,7 @@
 		},
 		mounted() {
 			this.$bus.$on('mycart',(res)=>{
-				if(res.cart === "SUCCESS"){
+				if(res.data === "SUCCESS"){
 					this.getdata();
 				}
 			})

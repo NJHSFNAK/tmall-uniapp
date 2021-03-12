@@ -1,3 +1,4 @@
+<!-- 购物车登录 -->
 <template>
 	<view class="login-page" v-if="show">
 		<button type="primary" open-type="getUserInfo" @getuserinfo="getUserInfo">登录</button>
@@ -19,9 +20,10 @@
 				try{
 					let data = await new wxLogin(userInfo, errMsg).login();
 					this.show = false;
-					this.$bus.$emit('mycart',{data:data});
+					this.$bus.$emit('mycart',{data: 'SUCCESS'});
 					new this.$Toast('登陆成功').showtoast();
 					// 登录成功，更新数据
+					
 				}catch(err){
 					console.log(err)
 				}
